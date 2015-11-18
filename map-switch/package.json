@@ -1,0 +1,16 @@
+{
+  "title": "Switch Map Addon",
+  "name": "map-switch",
+  "version": "0.0.1",
+  "description": "Show current point of interest in another online map service",
+  "main": "index.js",
+  "author": "Roman Qlogin",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
