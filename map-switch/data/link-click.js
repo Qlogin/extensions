@@ -7,14 +7,14 @@ for (var i = 0; i != elems.length; ++i) {
 
 // Selection and clicking callbacks
 function select(event) {
-   event.target.style.border = '2px solid #b0da2e';
+   event.currentTarget.style.border = '2px solid #b0da2e';
 }
 function unselect(event) {
-   event.target.style.border = '2px solid white';
+   event.currentTarget.style.border = '2px solid white';
 }
 function open_link(event) {
    unselect(event);
-   self.port.emit('link-clicked', event.target.getAttribute('data-url'));
+   self.port.emit('link-clicked', event.currentTarget.getAttribute('data-url'));
 }
 
 // Listen for the "show" event being sent from the
