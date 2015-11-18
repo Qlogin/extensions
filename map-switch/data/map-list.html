@@ -6,7 +6,7 @@
       margin: 0px;
    }
    table {
-      width:  200px;
+      width:  220px;
       height: 120px;
    }
    td {
@@ -22,17 +22,23 @@
 </head>
 <body>
    <table>
-      <tr id="yandex">
-         <td><img src="http://maps.yandex.ru/favicon.png" width="16px"></td>
-         <td class="selection" data-url="http://maps.yandex.ru">Yandex Map</td>
+      <tr>
+         <td width="20px"><img src="http://maps.yandex.ru/favicon.png" width="16px"></td>
+         <td id="yandex" class="selection" data-url="maps.yandex.ru">
+            <img src="./check.png" align="right" style="display: none">Yandex Map
+         </td>
       </tr>
-      <tr id="google">
+      <tr>
          <td><img src="http://www.google.com/images/branding/product/ico/maps_16dp.ico"></td>
-         <td class="selection" data-url="http://maps.google.ru">Google Map</td>
+         <td id="google" class="selection" data-url="www.google.ru/maps">
+            <img src="./check.png" align="right" style="display: none">Google Map
+         </td>
       </tr>
-      <tr id="osm">
+      <tr>
          <td><img src="http://www.openstreetmap.org/assets/favicon-16x16-b5e4abe84fb615809252921d52099ede3236d1b7112ea86065a8e37e421c610b.png"></td>
-         <td class="selection" data-url="http://www.openstreetmap.org">OpenStreetMap</td>
+         <td id="osm" class="selection" data-url="www.openstreetmap.org">
+            <img src="./check.png" align="right" style="display: none">OpenStreetMap
+         </td>
       </tr>
    </table>
 </body>
