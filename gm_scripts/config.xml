@@ -1,0 +1,15 @@
+<UserScriptConfig>
+	<Script basedir="Yandex_Real_Link" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Remove 'mousedown' attribute from links" enabled="true" filename="Yandex_Real_Link.user.js" installTime="1438177618680" modified="1438178174792" name="Yandex Real Link" namespace="Roman.Qlogin" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="9d250946-73e8-498a-8364-c3c4bc781172" version="1" installurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Yandex_Real_Link/Yandex_Real_Link.user.js" updateurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Yandex_Real_Link/Yandex_Real_Link.user.js">
+		<Grant>none</Grant>
+		<Include>https://*yandex.*</Include>
+	</Script>
+	<Script basedir="Monoceros_Links" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Add Monoceros common links" enabled="true" filename="Monoceros_Links.user.js" installTime="1439391711863" modified="1439394509501" name="Monoceros Links" namespace="Roman.Qlogin" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="74b60b05-82b2-4e6f-b173-0c6df2ac70d0" version="1" installurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Monoceros_Links/Monoceros_Links.user.js" updateurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Monoceros_Links/Monoceros_Links.user.js">
+		<Grant>none</Grant>
+		<Include>http://10.10.54.55:55555/*</Include>
+		<UserInclude>http://10.10.54.55:*</UserInclude>
+	</Script>
+	<Script basedir="Geocaching_coordinates" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Find geo coordinates on geocachers sites and make links to OSM" enabled="true" filename="Geocaching_coordinates.user.js" installTime="1443541994192" modified="1446211643582" name="Geocaching coordinates" namespace="Roman.Qlogin" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="13d3cd2e-e2e5-4036-aa98-b6ca303aac96" version="1" installurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Geocaching_coordinates/Geocaching_coordinates.user.js" updateurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Geocaching_coordinates/Geocaching_coordinates.user.js">
+		<Grant>none</Grant>
+		<Include>http://www.geocaching.su/*</Include>
+	</Script>
+</UserScriptConfig>
