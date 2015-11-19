@@ -7,7 +7,7 @@
    }
    table {
       width:  220px;
-      height: 120px;
+      height: 180px;
    }
    td {
       padding: 5px 10px;
@@ -18,12 +18,16 @@
    td.selection {
       cursor: pointer;
    }
+   td#coords {
+      border-style: none
+      padding: 1px 10px;
+   }
 </style>
 </head>
 <body>
    <table>
       <tr>
-         <td width="20px"><img src="http://maps.yandex.ru/favicon.png" width="16px"></td>
+         <td width="20px"><img src="http://maps.yandex.ru/favicon.png" height="16px"></td>
          <td id="yandex" class="selection" data-url="maps.yandex.ru">
             <img src="./check.png" align="right" style="display: none">Yandex Map
          </td>
@@ -39,6 +43,15 @@
          <td id="osm" class="selection" data-url="www.openstreetmap.org">
             <img src="./check.png" align="right" style="display: none">OpenStreetMap
          </td>
+      </tr>
+      <tr>
+         <td><img src="http://openstreetmap.ru/favicon.png" height="16px"></td>
+         <td id="osm_ru" class="selection" data-url="openstreetmap.ru">
+            <img src="./check.png" align="right" style="display: none">OpenStreetMap RU
+         </td>
+      </tr>
+      <tr>
+         <td id="coords" colspan="2">-</td>
       </tr>
    </table>
 </body>
