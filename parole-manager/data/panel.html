@@ -1,0 +1,41 @@
+<html>
+<head>
+  <style type="text/css" media="all">
+    .title {
+      text-align: center;
+      cursor: pointer;
+      background-color: #007373;
+      color: #FFF;
+      padding: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <script language="JavaScript" type="text/javascript">
+    function title_clicked() {
+      addon.port.emit("title-clicked");
+    }
+
+    addon.port.on("set-domain", function set_domain(host) {
+      var dom = document.getElementById("domain");
+      dom.value = host;
+    });
+  </script>
+  <div class="title" onclick="title_clicked()">Parole manager</div>
+  <div>&nbsp;</div>
+  <div class="description">Your Personal Secret Master Password:</div>
+  <div class="field"><input type="text" name="moto" id="moto" size="30"/></div>
+  <div class="description">Domain or URL:</div>
+  <div class="field"><input type="text" name="domain" id="domain" size="30"/></div>
+  <div class="description">Email or Username:</div>
+  <div class="field"><input type="text" name="email" id="email" size="30"/></div>
+  <div class="description">Length of Password (&lt;25):</div>
+  <div class="field"><input type="text" name="length" id="length" value="12" size="5"/></div>
+  <div>&nbsp;</div>
+  <div class="center"><input type="button" name="getPassword" id="getPassword" value="Show Password!" /></div>
+  <div class="description">Your password is:</div>
+  <div class="password" id="password">&nbsp;</div>
+  <div>&nbsp;</div>
+</body>
+</html>
