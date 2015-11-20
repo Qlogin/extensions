@@ -1,6 +1,9 @@
-<html>
+﻿<html>
 <head>
   <style type="text/css" media="all">
+    body {
+      background-color: #DDE2DD;
+    }
     .title {
       text-align: center;
       cursor: pointer;
@@ -9,31 +12,36 @@
       padding: 4px;
       font-weight: bold;
     }
+    input[type="text"] {
+      width: 250px;
+    }
+    #password {
+      font-size: 1.4em;
+      font-weight: bold;
+    }
   </style>
+  <!-- Scripts -->
+  <script type="text/javascript" src="oclib/Root.js"></script>
+  <script type="text/javascript" src="oclib/MessageDigest.js"></script>
+  <script type="text/javascript" src="oclib/NumeralSystem.js"></script>
+  <script type="text/javascript" src="panel.js"></script>
 </head>
 <body>
-  <script language="JavaScript" type="text/javascript">
-    function title_clicked() {
-      addon.port.emit("title-clicked");
-    }
-
-    addon.port.on("set-domain", function set_domain(host) {
-      var dom = document.getElementById("domain");
-      dom.value = host;
-    });
-  </script>
   <div class="title" onclick="title_clicked()">Parole manager</div>
   <div>&nbsp;</div>
   <div class="description">Your Personal Secret Master Password:</div>
-  <div class="field"><input type="text" name="moto" id="moto" size="30"/></div>
+  <div class="field"><input type="text" id="moto"/></div>
   <div class="description">Domain or URL:</div>
-  <div class="field"><input type="text" name="domain" id="domain" size="30"/></div>
+  <div class="field"><input type="text" id="domain"/></div>
   <div class="description">Email or Username:</div>
-  <div class="field"><input type="text" name="email" id="email" size="30"/></div>
+  <div class="field"><input type="text" id="email"/></div>
   <div class="description">Length of Password (&lt;25):</div>
-  <div class="field"><input type="text" name="length" id="length" value="12" size="5"/></div>
+  <div class="field"><input type="number" id="length" value="12" min="6" max="24" style="width:60px"/></div>
   <div>&nbsp;</div>
-  <div class="center"><input type="button" name="getPassword" id="getPassword" value="Show Password!" /></div>
+  <div class="center">
+    <input type="button" id="getPassword"  value="Show password!" onclick="showPassword()"/>
+  </div>
+  <div>&nbsp;</div>
   <div class="description">Your password is:</div>
   <div class="password" id="password">&nbsp;</div>
   <div>&nbsp;</div>

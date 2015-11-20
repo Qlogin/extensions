@@ -1,10 +1,10 @@
-var { ToggleButton } = require('sdk/ui/button/toggle');
+var buttons = require('sdk/ui/button/toggle');
 var panels = require("sdk/panel");
 var self = require("sdk/self");
 
-var button = ToggleButton({
-  id: "my-button",
-  label: "my button",
+var button = buttons.ToggleButton({
+  id: "manager-button",
+  label: "Parole Manager",
   icon: {
     "16": "./icon-16.png",
     "32": "./icon-32.png",
@@ -16,7 +16,8 @@ var button = ToggleButton({
 var panel = panels.Panel({
   contentURL: self.data.url("panel.html"),
   width: 300,
-  height:300,
+  height:350,
+  onShow: handleShow,
   onHide: handleHide
 });
 
@@ -28,8 +29,21 @@ function handleChange(state) {
   }
 }
 
+var urls = require("sdk/url");
+
+function handleShow() {
+  host = urls.URL(tabs.activeTab.url).hostname;
+  var dot_pos = host.lastIndexOf('.');
+  if (dot_pos > 0) {
+    dot_pos = host.lastIndexOf('.', dot_pos - 1);
+    host = host.substring(dot_pos + 1);
+  }
+  panel.port.emit("init", host);
+}
+
 function handleHide() {
   button.state('window', {checked: false});
+  panel.port.emit("close");
 }
 
 var tabs = require("sdk/tabs");
@@ -37,11 +51,4 @@ var tabs = require("sdk/tabs");
 panel.port.on("title-clicked", function () {
   tabs.open("http://parolemanager.com");
   panel.hide();
-});
-
-var urls = require("sdk/url");
-
-panel.on("show", function() {
-  host = urls.URL(tabs.activeTab.url).hostname;
-  panel.port.emit("set-domain", host);
 });
