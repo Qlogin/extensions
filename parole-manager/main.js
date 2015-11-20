@@ -1,6 +1,10 @@
 var buttons = require('sdk/ui/button/toggle');
 var panels = require("sdk/panel");
+var urls = require("sdk/url");
+var tabs = require("sdk/tabs");
 var self = require("sdk/self");
+
+// Setup UI elements
 
 var button = buttons.ToggleButton({
   id: "manager-button",
@@ -21,6 +25,8 @@ var panel = panels.Panel({
   onHide: handleHide
 });
 
+// Callbacks
+
 function handleChange(state) {
   if (state.checked) {
     panel.show({
@@ -28,8 +34,6 @@ function handleChange(state) {
     });
   }
 }
-
-var urls = require("sdk/url");
 
 function handleShow() {
   host = urls.URL(tabs.activeTab.url).hostname;
@@ -46,9 +50,17 @@ function handleHide() {
   panel.port.emit("close");
 }
 
-var tabs = require("sdk/tabs");
+// Signals/slots
 
 panel.port.on("title-clicked", function () {
   tabs.open("http://parolemanager.com");
   panel.hide();
+});
+
+panel.port.on("fill-form", function(email, password) {
+    var worker = tabs.activeTab.attach({
+      contentScriptFile: [self.data.url("jquery.min.js"),
+                          self.data.url("fill-form.js")]
+    });
+    worker.port.emit("fill-form", email, password);
 });

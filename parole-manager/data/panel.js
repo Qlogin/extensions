@@ -53,6 +53,12 @@ function copyToClipboard() {
   area.value = "";
 }
 
+function fillForm() {
+  var shortPassword = getPassword();
+  var email = document.getElementById("email").value;
+  addon.port.emit("fill-form", email, shortPassword);
+}
+
 // Main panel events callback
 
 function on_init(host) {
