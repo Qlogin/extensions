@@ -33,8 +33,24 @@ function getPasswordSimple(string) {
 
 function showPassword() {
   var shortPassword = getPassword();
-  document.getElementById("password").innerHTML = shortPassword;
+  document.getElementById("password").value = shortPassword;
   return 1;
+}
+
+function copyToClipboard() {
+  var shortPassword = getPassword();
+  var area = document.getElementById("password");
+  area.value = shortPassword;
+  area.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successfully' : 'unsuccessfully';
+    console.log('Copy password to clipboard ' + msg);
+  } catch(err) {  
+    console.log('Oops, unable to copy password');
+  }
+  area.value = "";
 }
 
 // Main panel events callback
@@ -43,7 +59,7 @@ function on_init(host) {
   var dom = document.getElementById("domain");
   dom.value = host;
   if (motoString != "") {
-    moto.setAttribute("placeholder", "??????????");
+    moto.setAttribute("placeholder", "●●●●●●●●●●");
   } else {
     moto.setAttribute("placeholder", "");
   }
@@ -54,7 +70,7 @@ function on_close() {
   if (moto.value != "")
      motoString = moto.value;
   moto.value = "";
-  document.getElementById("password").innerHTML = "";
+  document.getElementById("password").value = "";
 }
 
 addon.port.on("init", on_init);

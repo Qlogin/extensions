@@ -16,7 +16,7 @@
       width: 250px;
     }
     #password {
-      font-size: 1.4em;
+      font-size: 1.2em;
       font-weight: bold;
     }
   </style>
@@ -39,11 +39,13 @@
   <div class="field"><input type="number" id="length" value="12" min="6" max="24" style="width:60px"/></div>
   <div>&nbsp;</div>
   <div class="center">
-    <input type="button" id="getPassword"  value="Show password!" onclick="showPassword()"/>
+    <input type="button" id="getPassword"  value="Show!"         onclick="showPassword()"/>
+    <input type="button" id="copyPassword" value="To clipboard!" onclick="copyToClipboard()"/>
+    <input type="button" id="fillForm"     value="Fill form!"    disabled="disabled"/>
   </div>
   <div>&nbsp;</div>
   <div class="description">Your password is:</div>
-  <div class="password" id="password">&nbsp;</div>
+    <input type="text" id="password" readonly="true"/>
   <div>&nbsp;</div>
 </body>
 </html>
