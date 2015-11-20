@@ -73,5 +73,7 @@ function on_close() {
   document.getElementById("password").value = "";
 }
 
-addon.port.on("init", on_init);
-addon.port.on("close", on_close);
+if (typeof addon !== 'undefined') {
+  addon.port.on("init", on_init);
+  addon.port.on("close", on_close);
+}

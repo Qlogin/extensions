@@ -1,3 +1,4 @@
+var elems;
 var current_poi;
 var services = {
    'yandex' : {
@@ -72,13 +73,6 @@ var services = {
    }
 };
 
-var elems = document.getElementsByClassName('selection');
-for (var i = 0; i != elems.length; ++i) {
-   elems[i].addEventListener('mouseover', select);
-   elems[i].addEventListener('mouseout', unselect);
-   elems[i].addEventListener('click', open_link);
-}
-
 // Selection and clicking callbacks
 function select(event) {
    event.currentTarget.style.border = '2px solid #b0da2e';
@@ -94,27 +88,38 @@ function open_link(event) {
       var url = services[id].get_url_from_poi(current_poi);
       link += url;
    }
-   self.port.emit('link-clicked', link);
+   addon.port.emit('link-clicked', link);
 }
 
-// Listen for the "show" event being sent from the
-// main add-on code. It means that the panel's about
-// to be shown.
-self.port.on('show', function onShow(url) {
-   current_poi = null;
+window.onload = function init() {
+   elems = document.getElementsByClassName('selection');
    for (var i = 0; i != elems.length; ++i) {
-      if (url.contains(elems[i].getAttribute('data-url'))) {
-         elems[i].children[0].style.display = 'inline';
-         var id = elems[i].getAttribute('id');
-         current_poi = services[id].get_poi_from_url(url);
-         var coord_elem = document.getElementById('coords');
-         if (current_poi) {
-            coord_elem.innerHTML = current_poi[1] + ', ' + current_poi[2];
-         } else {
-            coord_elem.innerHTML = '-';
-         }
-      } else {
-         elems[i].children[0].style.display = 'none';
-      }
+      elems[i].addEventListener('mouseover', select);
+      elems[i].addEventListener('mouseout', unselect);
+      elems[i].addEventListener('click', open_link);
    }
-});
+
+   // Listen for the "show" event being sent from the
+   // main add-on code. It means that the panel's about
+   // to be shown.
+   if (typeof addon !== 'undefined') {
+      addon.port.on('show', function onShow(url) {
+         current_poi = null;
+         for (var i = 0; i != elems.length; ++i) {
+            if (url.contains(elems[i].getAttribute('data-url'))) {
+               elems[i].children[0].style.display = 'inline';
+               var id = elems[i].getAttribute('id');
+               current_poi = services[id].get_poi_from_url(url);
+               var coord_elem = document.getElementById('coords');
+               if (current_poi) {
+                  coord_elem.innerHTML = current_poi[1] + ', ' + current_poi[2];
+               } else {
+                  coord_elem.innerHTML = '-';
+               }
+            } else {
+               elems[i].children[0].style.display = 'none';
+            }
+         }
+      });
+   }
+}

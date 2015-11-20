@@ -7,7 +7,6 @@ var panel = panels.Panel({
    width : 224,
    height: 184,
    contentURL: self.data.url('map-list.html'),
-   contentScriptFile: self.data.url('link-click.js'),
    onShow: handleShow,
    onHide: handleHide
 });
