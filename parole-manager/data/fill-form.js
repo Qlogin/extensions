@@ -19,8 +19,31 @@ function on_fill_form(username, password) {
 
    var user = $(form).find(selector).filter(":visible");
    user.each(function() {
-      $(this).val(username);
+      if ($(this).val() == "")
+         $(this).val(username);
    });
 }
 
+function on_get_user() {
+   var pwd = $("input[type='password']").filter(":visible");
+   if (pwd.length == 0)
+      return;
+
+   var form = pwd.get(0).form;
+   pwd.each(function(){
+       if (this.form != form)
+         form = null;
+   });
+   if (!form)
+      return;
+
+   var selector = "input[name='username'],input[name='email']";
+   var user = $(form).find(selector).filter(":visible");
+   if (user.length == 0)
+      return;
+
+   self.port.emit("set-user", user.val());
+}
+
 self.port.on("fill-form", on_fill_form);
+self.port.on("get-user", on_get_user);

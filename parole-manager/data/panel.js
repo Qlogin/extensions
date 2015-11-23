@@ -79,7 +79,14 @@ function on_close() {
   document.getElementById("password").value = "";
 }
 
+function on_set_user(user) {
+  if (user != "") {
+    document.getElementById("email").value = user;
+  }
+}
+
 if (typeof addon !== 'undefined') {
   addon.port.on("init", on_init);
   addon.port.on("close", on_close);
+  addon.port.on("set-user", on_set_user);
 }

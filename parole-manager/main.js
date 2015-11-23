@@ -43,6 +43,15 @@ function handleShow() {
     host = host.substring(dot_pos + 1);
   }
   panel.port.emit("init", host);
+
+  var worker = tabs.activeTab.attach({
+    contentScriptFile: [self.data.url("jquery.min.js"),
+                        self.data.url("fill-form.js")]
+  });
+  worker.port.on("set-user", function(user) {
+    panel.port.emit("set-user", user);
+  });
+  worker.port.emit("get-user");
 }
 
 function handleHide() {
