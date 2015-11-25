@@ -2,8 +2,31 @@ var messageDigest = new com.oclib.javascript.security.MessageDigest();
 var numeralSystem = new com.oclib.javascript.math.NumeralSystem();
 var motoString = "";
 
-function title_clicked() {
+function titleClicked() {
   addon.port.emit("title-clicked");
+}
+
+function motoChanged() {
+  var moto = document.getElementById("moto");
+  var hint = document.getElementsByClassName("hint")[0];
+  if (moto.value == "")
+    hint.innerHTML = "[show]";
+  else
+    hint.innerHTML = "[hide]";
+}
+
+function hintClicked() {
+  var moto = document.getElementById("moto");
+  var hint = document.getElementsByClassName("hint")[0];
+  if (moto.value != "") {
+     motoString = moto.value;
+     moto.value = "";
+     moto.setAttribute("placeholder", "●●●●●●●●●●");
+     hint.innerHTML = "[show]";
+  } else if (motoString != "") {
+     moto.value = motoString;
+     hint.innerHTML = "[hide]";
+  }
 }
 
 function getPassword() {
@@ -62,12 +85,16 @@ function fillForm() {
 // Main panel events callback
 
 function on_init(host) {
-  var dom = document.getElementById("domain");
-  dom.value = host;
+  document.getElementById("domain").value = host;
+
+  var moto = document.getElementById("moto");
+  var hint = document.getElementsByClassName("hint")[0];
   if (motoString != "") {
     moto.setAttribute("placeholder", "●●●●●●●●●●");
+    hint.innerHTML = "[show]";
   } else {
     moto.setAttribute("placeholder", "");
+    hint.innerHTML = "";
   }
 }
 
