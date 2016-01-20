@@ -1,16 +1,23 @@
 {
-  "title": "Switch Map Addon",
+  "id": "map-switch@Roman.Qlogin",
+  "title": "Switch Maps",
   "name": "map-switch",
-  "version": "0.0.1",
-  "description": "Show current point of interest in another online map service",
+  "version": "0.1.0",
+  "description": "Show current point of interest in other online map services",
   "main": "index.js",
   "author": "Roman Qlogin",
   "engines": {
     "firefox": ">=38.0a1",
     "fennec": ">=38.0a1"
   },
+  "icon": {
+    "32": "resource://map-switch-at-Roman-dot-Qlogin/data/icon-32.png",
+    "64": "resource://map-switch-at-Roman-dot-Qlogin/data/icon-64.png"
+  },
   "license": "MIT",
   "keywords": [
     "jetpack"
-  ]
+  ],
+  "updateURL": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/update.rdf",
+  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/map-switch-0.1.0.xpi"
 }
