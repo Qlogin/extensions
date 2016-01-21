@@ -1,7 +1,9 @@
-var elems;
+var elems = [];
 var current_poi;
 var services = {
    'yandex' : {
+      name : 'Yandex Map',
+      base_url : 'maps.yandex.ru',
       icon : 'http://maps.yandex.ru/favicon.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
@@ -24,6 +26,8 @@ var services = {
       }
    },
    'google' : {
+      name : 'Google Map',
+      base_url : 'www.google.ru/maps',
       icon : 'http://www.google.com/images/branding/product/ico/maps_16dp.ico',
       get_poi_from_url : function(str) {
          var res = str.match(/@([\d.]+),([\d.]+),([\d.]+)z/);
@@ -38,6 +42,8 @@ var services = {
       }
    },
    'osm' : {
+      name : 'OpenStreetMap',
+      base_url : 'www.openstreetmap.org',
       icon : 'http://www.openstreetmap.org/assets/favicon-16x16-b5e4abe84fb615809252921d52099ede3236d1b7112ea86065a8e37e421c610b.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
@@ -53,6 +59,8 @@ var services = {
       }
    },
    'osm_ru' : {
+      name : 'OpenStreetMap RU',
+      base_url : 'openstreetmap.ru',
       icon : 'http://openstreetmap.ru/favicon.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
@@ -86,43 +94,63 @@ function unselect(event) {
 }
 function open_link(event) {
    unselect(event);
-   var link = event.currentTarget.getAttribute('data-url');
+   var id = event.currentTarget.parentElement.getAttribute('id');
+   var link = services[id].base_url;
    if (current_poi) {
-      var id = event.currentTarget.getAttribute('id');
       var url = services[id].get_url_from_poi(current_poi);
       link += url;
    }
-   addon.port.emit('link-clicked', link);
+   if (typeof addon !== 'undefined') {
+      addon.port.emit('link-clicked', link);
+   } else {
+      document.location.href = 'http://' + link;
+   }
 }
 
 // Preparing panel content to show
 function on_show(url) {
    current_poi = null;
    for (var i = 0; i != elems.length; ++i) {
-      var elink = elems[i].children[1];
-      if (url.indexOf(elink.getAttribute('data-url')) != -1) {
+      var id = elems[i].getAttribute('id');
+      var elink = elems[i].getElementsByClassName('link')[0];
+      if (url.indexOf(services[id].base_url) != -1) {
          elink.children[0].style.display = 'inline';
-         var id = elink.getAttribute('id');
          current_poi = services[id].get_poi_from_url(url);
-         var coord_elem = document.getElementById('coords');
-         if (current_poi) {
-            coord_elem.innerHTML = current_poi[1] + ', ' + current_poi[2];
-         } else {
-            coord_elem.innerHTML = '-';
-         }
       } else {
          elink.children[0].style.display = 'none';
       }
-      var img = elems[i].children[0].children[0];
-      var id = elink.getAttribute('id');
+      var img = elems[i].getElementsByClassName('icon')[0];
       img.setAttribute('src', services[id].icon);
+   }
+   var coord_elem = document.getElementById('coords');
+   if (current_poi) {
+      coord_elem.innerHTML = current_poi[1] + ', ' + current_poi[2];
+   } else {
+      coord_elem.innerHTML = '-';
    }
 }
 
 window.onload = function init() {
-   elems = document.getElementsByClassName('selection');
-   for (var i = 0; i != elems.length; ++i) {
-      var elink = elems[i].children[1];
+   var ids = ['yandex', 'google', 'osm', 'osm_ru'];
+
+   var src_row = document.getElementsByClassName('selection')[0];
+   var table_rows = src_row.parentElement.children;
+   var last_row = table_rows[table_rows.length - 1];
+
+   elems.push(src_row);
+   for (var i = 1; i != ids.length; ++i) {
+      var new_row = src_row.cloneNode(true);
+      src_row.parentElement.insertBefore(new_row, last_row);
+      elems.push(new_row);
+   }
+
+   for (var i = 0; i != ids.length; ++i) {
+      elems[i].setAttribute('id', ids[i]);
+
+      var elink = elems[i].getElementsByClassName('link')[0];
+      var text = document.createTextNode(services[ids[i]].name);
+      elink.appendChild(text);
+
       elink.addEventListener('mouseover', select);
       elink.addEventListener('mouseout', unselect);
       elink.addEventListener('click', open_link);
