@@ -18,6 +18,6 @@
   "keywords": [
     "jetpack"
   ],
-  "updateURL": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/update.rdf",
-  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/map-switch-0.1.1.xpi"
+  "updateURL": "https://raw.githubusercontent.com/Qlogin/extensions/master/RELEASE/map-switch/update.rdf",
+  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/master/RELEASE/map-switch/map-switch-0.1.1.xpi"
 }
