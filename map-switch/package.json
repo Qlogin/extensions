@@ -2,7 +2,7 @@
   "id": "map-switch@Roman.Qlogin",
   "title": "Switch Maps",
   "name": "map-switch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Show current point of interest in other online map services",
   "main": "index.js",
   "author": "Roman Qlogin",
@@ -19,5 +19,5 @@
     "jetpack"
   ],
   "updateURL": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/update.rdf",
-  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/map-switch-0.1.0.xpi"
+  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/RELEASE/map-switch/map-switch-0.1.1.xpi"
 }
