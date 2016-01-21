@@ -7,7 +7,8 @@ var services = {
       icon : 'http://maps.yandex.ru/favicon.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
-         var res = str.match(/whatshere\[point\]=([\d.]+)%2C([\d.]+).*whatshere\[zoom\]=(\d+)/);
+         str = str.replace(/\[/g, '%5B').replace(/\]/g, '%5D').replace(/ /g, '%2C');
+         var res = str.match(/whatshere%5Bpoint%5D=([\d.]+)%2C([\d.]+)&whatshere%5Bzoom%5D=(\d+)/);
          if (!res) {
             with_poi = false;
             res = str.match(/ll=([\d.]+)%2C([\d.]+).*z=(\d+)/);
