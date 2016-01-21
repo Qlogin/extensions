@@ -82,6 +82,23 @@ var services = {
          link += 'map=' + args[3] + '/' + args[1] + '/' + args[2];
          return link;
       }
+   },
+   'panoramio' : {
+      name : 'Panoramio',
+      base_url : 'www.panoramio.com/map',
+      icon : 'http://www.panoramio.com/img/favicon.ico',
+      get_poi_from_url : function(str) {
+         var res = str.match(/#lt=([\d.]+)&ln=([\d.]+)&z=([\d.]+)/);
+         if (!res) {
+            return res;
+         }
+         res[3] = String(17 - parseInt(res[3]));
+         return [false].concat(res.slice(1));
+      },
+      get_url_from_poi : function(args) {
+         var link = '#lt=' + args[1] + '&ln=' + args[2] + '&z=' + String(17 - parseInt(args[3])) + '&k=0';
+         return link;
+      }
    }
 };
 
@@ -131,7 +148,7 @@ function on_show(url) {
 }
 
 window.onload = function init() {
-   var ids = ['yandex', 'google', 'osm', 'osm_ru'];
+   var ids = ['yandex', 'google', 'osm', 'osm_ru', 'panoramio'];
 
    var src_row = document.getElementsByClassName('selection')[0];
    var table_rows = src_row.parentElement.children;
