@@ -5,7 +5,7 @@ var self = require('sdk/self');
 
 var panel = panels.Panel({
    width : 224,
-   height: 216,
+   height: 248,
    contentURL: self.data.url('map-list.html'),
    onShow: handleShow,
    onHide: handleHide

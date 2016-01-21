@@ -100,6 +100,22 @@ var services = {
          var link = '#lt=' + args[1] + '&ln=' + args[2] + '&z=' + String(17 - parseInt(args[3])) + '&k=0';
          return link;
       }
+   },
+   'f4map' : {
+      name : 'F4 map',
+      base_url : 'demo.f4map.com',
+      icon : 'http://www.f4map.com/cacheForever/f51c5661379bb5441e8e773abdf87d7a8a9932cd/images/f4_favicon.png',
+      get_poi_from_url : function(str) {
+         var res = str.match(/#lat=([\d.]+)&lon=([\d.]+)&zoom=([\d.]+)/);
+         if (!res) {
+            return res;
+         }
+         return [false].concat(res.slice(1));
+      },
+      get_url_from_poi : function(args) {
+         var link = '/#lat=' + args[1] + '&lon=' + args[2] + '&zoom=' + args[3];
+         return link;
+      }
    }
 };
 
@@ -149,7 +165,7 @@ function on_show(url) {
 }
 
 window.onload = function init() {
-   var ids = ['yandex', 'google', 'osm', 'osm_ru', 'panoramio'];
+   var ids = ['yandex', 'google', 'panoramio', 'osm', 'osm_ru', 'f4map'];
 
    var src_row = document.getElementsByClassName('selection')[0];
    var table_rows = src_row.parentElement.children;
