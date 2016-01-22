@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
 <head>
   <style type="text/css" media="all">
     body {
@@ -31,12 +32,12 @@
   <script type="text/javascript" src="panel.js"></script>
 </head>
 <body>
-  <div class="title" onclick="titleClicked()">Parole manager</div>
+  <div class="title">Parole manager</div>
   <div>&nbsp;</div>
   <div class="description">Your Personal Secret Master Password:</div>
   <div class="field">
-    <input type="text" id="moto" oninput="motoChanged()"/>
-    <span class="hint" onclick="hintClicked()">[show]</span>
+    <input type="text" id="moto"/>
+    <span class="hint">[show]</span>
   </div>
   <div class="description">Domain or URL:</div>
   <div class="field"><input type="text" id="domain"/></div>
@@ -46,9 +47,9 @@
   <div class="field"><input type="number" id="length" value="12" min="6" max="24" style="width:60px"/></div>
   <div>&nbsp;</div>
   <div class="center">
-    <input type="button" id="getPassword"  value="Show!"         onclick="showPassword()"/>
-    <input type="button" id="copyPassword" value="To clipboard!" onclick="copyToClipboard()"/>
-    <input type="button" id="fillForm"     value="Fill form!"    onclick="fillForm()"/>
+    <input type="button" id="getPassword"  value="Show!"/>
+    <input type="button" id="copyPassword" value="To clipboard!"/>
+    <input type="button" id="fillForm"     value="Fill form!"/>
   </div>
   <div>&nbsp;</div>
   <div class="description">Your password is:</div>

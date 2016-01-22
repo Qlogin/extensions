@@ -20,7 +20,7 @@ var button = buttons.ToggleButton({
 var panel = panels.Panel({
   contentURL: self.data.url("panel.html"),
   width: 300,
-  height:350,
+  height:355,
   onShow: handleShow,
   onHide: handleHide
 });
@@ -37,11 +37,6 @@ function handleChange(state) {
 
 function handleShow() {
   host = urls.URL(tabs.activeTab.url).hostname;
-  var dot_pos = host.lastIndexOf('.');
-  if (dot_pos > 0) {
-    dot_pos = host.lastIndexOf('.', dot_pos - 1);
-    host = host.substring(dot_pos + 1);
-  }
   panel.port.emit("init", host);
 
   var worker = tabs.activeTab.attach({
