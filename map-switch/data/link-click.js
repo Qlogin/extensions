@@ -4,7 +4,7 @@ var services = {
    'yandex' : {
       name : 'Yandex Map',
       base_url : 'maps.yandex.ru',
-      icon : 'http://maps.yandex.ru/favicon.png',
+      icon : 'https://maps.yandex.ru/favicon.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
          str = str.replace(/\[/g, '%5B').replace(/\]/g, '%5D').replace(/ /g, '%2C');
@@ -29,7 +29,7 @@ var services = {
    'google' : {
       name : 'Google Map',
       base_url : 'www.google.ru/maps',
-      icon : 'http://www.google.com/images/branding/product/ico/maps_16dp.ico',
+      icon : 'https://www.google.com/images/branding/product/ico/maps_16dp.ico',
       get_poi_from_url : function(str) {
          var res = str.match(/@([\d.]+),([\d.]+),([\d.]+)z/);
          if (!res) {
@@ -45,7 +45,7 @@ var services = {
    'osm' : {
       name : 'OpenStreetMap',
       base_url : 'www.openstreetmap.org',
-      icon : 'http://www.openstreetmap.org/assets/favicon-16x16-b5e4abe84fb615809252921d52099ede3236d1b7112ea86065a8e37e421c610b.png',
+      icon : 'https://www.openstreetmap.org/assets/favicon-16x16-b5e4abe84fb615809252921d52099ede3236d1b7112ea86065a8e37e421c610b.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
          var res = str.match(/#map=(\d+)\/([\d.]+)\/([\d.]+)/);
@@ -104,7 +104,7 @@ var services = {
    'f4map' : {
       name : 'F4 map',
       base_url : 'demo.f4map.com',
-      icon : 'http://www.f4map.com/cacheForever/f51c5661379bb5441e8e773abdf87d7a8a9932cd/images/f4_favicon.png',
+      icon : 'https://www.f4map.com/cacheForever/f51c5661379bb5441e8e773abdf87d7a8a9932cd/images/f4_favicon.png',
       get_poi_from_url : function(str) {
          var res = str.match(/#lat=([\d.]+)&lon=([\d.]+)&zoom=([\d.]+)/);
          if (!res) {
