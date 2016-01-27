@@ -12,4 +12,12 @@
 		<Grant>none</Grant>
 		<Include>http://www.geocaching.su/*</Include>
 	</Script>
+	<Script basedir="Wiki_Article_Date" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Show last modification time of Wikipedia's article" enabled="true" filename="Wiki_Article_Date.user.js" installTime="1453897365293" modified="1453914594618" name="Wiki Article Date" namespace="Roman.Qlogin" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="586206dd-cd0b-45b6-a868-df6701c8c49f" version="1" installurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Wiki_Article_Date/Wiki_Article_Date.user.js" updateurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Wiki_Article_Date/Wiki_Article_Date.user.js">
+		<Grant>none</Grant>
+		<Include>*.wikipedia.org/*</Include>
+	</Script>
+	<Script basedir="Wiki_Language_Flag" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Mark Wikipedia common languages with flag icons" enabled="true" filename="Wiki_Language_Flag.user.js" installTime="1453904042193" modified="1453914029522" name="Wiki Language Flag" namespace="Roman.Qlogin" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="91c75592-282d-4caf-9f7b-947898bbaa59" version="1" installurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Wiki_Language_Flag/Wiki_Language_Flag.user.js" updateurl="file:///Q:/FirefoxPortable/Data/profile/gm_scripts/Wiki_Language_Flag/Wiki_Language_Flag.user.js">
+		<Grant>none</Grant>
+		<Include>*.wikipedia.org/*</Include>
+	</Script>
 </UserScriptConfig>
