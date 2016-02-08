@@ -2,7 +2,7 @@
   "id": "parole-manager@Roman.Qlogin",
   "title": "The Password Manager",
   "name": "parole-manager",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A new most powerful tool to control your passwords",
   "main": "main.js",
   "author": "Roman Qlogin",
@@ -18,6 +18,6 @@
   "keywords": [
     "jetpack"
   ],
-  "updateURL": "https://raw.githubusercontent.com/Qlogin/extensions/master/RELEASE/parole-manager/update.rdf",
-  "updateLink": "https://raw.githubusercontent.com/Qlogin/extensions/master/RELEASE/parole-manager/parole-manager-0.2.1.xpi"
+  "updateURL": "https://qlogin.github.io/extensions/RELEASE/parole-manager/update.rdf",
+  "updateLink": "https://qlogin.github.io/extensions/RELEASE/parole-manager/parole-manager.xpi"
 }

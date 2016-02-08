@@ -1,9 +1,17 @@
 // ==UserScript==
+// @id          wiki_article_date@Roman.Qlogin
 // @name        Wiki Article Date
 // @namespace   Roman.Qlogin
+// @author      Roman Kulagin
 // @description Show last modification time of Wikipedia's article
 // @include     *.wikipedia.org/*
-// @version     1
+// @license     MIT
+// @homepage    https://qlogin.github.io/extensions/
+// @homepageURL https://qlogin.github.io/extensions/
+// @downloadURL https://qlogin.github.io/extensions/gm_scripts/Wiki_Article_Date/Wiki_Article_Date.user.js
+// @updateURL   https://qlogin.github.io/extensions/gm_scripts/Wiki_Article_Date/Wiki_Article_Date.user.js
+// @supportURL  https://github.com/qlogin/extensions/issues
+// @version     0.1
 // @grant       none
 // ==/UserScript==
 

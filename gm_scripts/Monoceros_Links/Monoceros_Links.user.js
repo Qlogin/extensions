@@ -1,9 +1,18 @@
 // ==UserScript==
+// @id           monoceros@Roman.Qlogin
 // @name         Monoceros Links
 // @namespace    Roman.Qlogin
-// @description  Add Monoceros common links
-// @include      http://10.10.54.55:55555/*
-// @version      1
+// @author       Roman Kulagin
+// @include      http://10.10.54.55:*
+// @include      http://10.10.54.139:*
+// @description  Prettify DOM structure of Monoceros UI pages
+// @license      MIT
+// @homepage     https://qlogin.github.io/extensions/
+// @homepageURL  https://qlogin.github.io/extensions/
+// @downloadURL  https://qlogin.github.io/extensions/gm_scripts/Monoceros_Links/Monoceros_Links.user.js
+// @updateURL    https://qlogin.github.io/extensions/gm_scripts/Monoceros_Links/Monoceros_Links.user.js
+// @supportURL   https://github.com/qlogin/extensions/issues
+// @version      0.1
 // @grant        none
 // ==/UserScript==
 
