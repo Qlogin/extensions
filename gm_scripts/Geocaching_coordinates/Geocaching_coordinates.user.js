@@ -1,9 +1,17 @@
 // ==UserScript==
+// @id          geo_coord@Roman.Qlogin
 // @name        Geocaching coordinates
 // @namespace   Roman.Qlogin
+// @author      Roman Kulagin
 // @include     http://www.geocaching.su/*
 // @description Find geo coordinates on geocachers sites and make links to OSM
-// @version     1
+// @license     MIT
+// @homepage    https://qlogin.github.io/extensions/
+// @homepageURL https://qlogin.github.io/extensions/
+// @downloadURL https://qlogin.github.io/extensions/gm_scripts/Geocaching_coordinates/Geocaching_coordinates.user.js
+// @updateURL   https://qlogin.github.io/extensions/gm_scripts/Geocaching_coordinates/Geocaching_coordinates.user.js
+// @supportURL  https://github.com/qlogin/extensions/issues
+// @version     0.1
 // @grant       none
 // ==/UserScript==
 

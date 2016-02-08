@@ -1,9 +1,17 @@
 // ==UserScript==
+// @id          wiki_language_flag@Roman.Qlogin
 // @name        Wiki Language Flag
 // @namespace   Roman.Qlogin
-// @description Mark Wikipedia common languages with flag icons
+// @author      Roman Kulagin
+// @description Add panel with flag icons for available languages of current article
 // @include     *.wikipedia.org/wiki/*
-// @version     1
+// @license     MIT
+// @homepage    https://qlogin.github.io/extensions/
+// @homepageURL https://qlogin.github.io/extensions/
+// @downloadURL https://qlogin.github.io/extensions/gm_scripts/Wiki_Language_Flag/Wiki_Language_Flag.user.js
+// @updateURL   https://qlogin.github.io/extensions/gm_scripts/Wiki_Language_Flag/Wiki_Language_Flag.user.js
+// @supportURL  https://github.com/qlogin/extensions/issues
+// @version     0.1
 // @grant       none
 // ==/UserScript==
 
