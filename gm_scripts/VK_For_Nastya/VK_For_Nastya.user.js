@@ -12,12 +12,17 @@
 // @downloadURL  https://qlogin.github.io/extensions/gm_scripts/VK_For_Nastya/VK_For_Nastya.user.js
 // @updateURL    https://qlogin.github.io/extensions/gm_scripts/VK_For_Nastya/VK_For_Nastya.user.js
 // @supportURL   https://github.com/qlogin/extensions/issues
-// @version     0.1
+// @version     0.2
 // @grant       none
 // ==/UserScript==
 
-var titles = [" - лучшая девушка на свете!", 
-              " - физик, художник и просто красавица! )))",
+if (window.parent === window) {
+
+var titles = [" - лучшая девушка на свете!",
+              " - удивительная по красоте, уму и грации девушка!",
+              " - само совершенство!",
+              " - \"... Воплощение женственности и изящества!\" (с)",
+              " - Ромино любимое Солнышко!",
               " - мечта, Ромино вдохновение!"];
 var cur_title = titles[Math.floor(Math.random() * titles.length)];
 
@@ -33,10 +38,10 @@ function refresh_page() {
       var profile = document.querySelectorAll("#profile_short .profile_info .miniblock");
       for (var i = 0; i != profile.length; ++i) {
         if (profile[1].children[0].textContent == "Семейное положение:") {
-          profile[1].children[1].innerHTML = "Скоро женится на <a href=\"/id86475825\">Анастасии Панфутовой</a>"; 
+          profile[1].children[1].innerHTML = "Скоро женится на <a href=\"/id86475825\">Анастасии Панфутовой</a>";
         }
       }
-    }; 
+    };
     upd_profile();
     var btn = document.getElementsByClassName("profile_info_link");
     if (btn.length != 0)
@@ -52,10 +57,13 @@ function refresh_page() {
 
 refresh_page();
 
-var messages = ["Настенька!!! Я тебя очень-очень сильно ЛЮБЛЮ!!!", 
-                "Настёна! Мне удивительно хорошо рядом с тобой!", 
+var messages = ["Настенька!!! Я тебя очень-очень сильно ЛЮБЛЮ!!!",
+                "Настёна! Мне удивительно хорошо рядом с тобой!",
                 "Настенька!!! Ты удивительная, потрясающая, невероятная!",
-                "Солнышко моё! Я безумно рад, что мы вместе!"];
+                "Солнышко моё! Я безумно рад, что мы вместе!",
+                "Я буду радовать тебя! Ты будешь радовать меня! И будем мы жить долго и счастливо)))",
+                "Настюша!!! Спасибо тебе за все наши потрясающие поездки и приключения!!!",
+                "Настенька, каждый день с тобой становится волшебным! Люблю тебя!!!"];
 
 var div = document.createElement("div");
 div.style.position = "fixed";
@@ -87,3 +95,28 @@ div.appendChild(link);
 div.appendChild(document.createElement("br"));
 div.appendChild(msgdiv);
 document.body.appendChild(div);
+
+// Side bar
+var side_elems = document.querySelectorAll(".left_label.inl_bl")
+for (var i = 0; i != side_elems.length; ++i) {
+  var title = side_elems[i].textContent;
+  if (title == 'Моя Страница')
+    title = 'Я самая, самая...';
+  else if (title == 'Мои Друзья')
+    title = 'Мои Поклонники';
+  else if (title == 'Мои Фотографии')
+    title = 'Мои Картины (Фото)';
+  else if (title == 'Мои Видеозаписи')
+    title = 'Мои Фильмы (Видео)';
+  else if (title == 'Мои Сообщения')
+    title = 'Мои Письма';
+  else if (title == 'Мои Аудиозаписи')
+    title = 'Мои Песни (Аудио)';
+  else if (title == 'Мои Группы')
+    title = 'Мои Общества (Группы)';
+  else if (title == 'Мои Новости')
+    title = 'Моя Пресса (Новости)';
+  side_elems[i].textContent = title;
+}
+
+}
