@@ -12,7 +12,7 @@
 // @downloadURL  https://qlogin.github.io/extensions/gm_scripts/VK_For_Nastya/VK_For_Nastya.user.js
 // @updateURL    https://qlogin.github.io/extensions/gm_scripts/VK_For_Nastya/VK_For_Nastya.user.js
 // @supportURL   https://github.com/qlogin/extensions/issues
-// @version     0.3
+// @version     0.4
 // @grant       none
 // ==/UserScript==
 
@@ -51,18 +51,6 @@ function refresh_page() {
     span.textContent = cur_title;
     span.style.color = "#f44";
     user[0].appendChild(span);
-    var upd_profile = function() {
-      var profile = document.querySelectorAll("#profile_short .profile_info .miniblock");
-      for (var i = 0; i != profile.length; ++i) {
-        if (profile[1].children[0].textContent == "Семейное положение:") {
-          profile[1].children[1].innerHTML = "Скоро выйдет замуж за <a href=\"/id35784\">Романа Кулагина</a>";
-        }
-      }
-    };
-    upd_profile();
-    var btn = document.getElementsByClassName("profile_info_link");
-    if (btn.length != 0)
-      btn[0].addEventListener("click", upd_profile);
   }
   window.setTimeout(refresh_page, 2000);
 }
