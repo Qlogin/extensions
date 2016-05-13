@@ -51,7 +51,7 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 1em;
   line-height: 1.5;
-  color: #6d6d6d;
+  color: #4d4d6d;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
 }
@@ -153,6 +153,8 @@ a.button span {
 }
 
 a.button.install {
+  width: 130px;
+  padding: 5px 5px 5px 5px;
   background: #d5000d;
   background: -moz-linear-gradient(top,  #d5000d 0%, #d00000 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d5000d), color-stop(100%,#d00000)); /* Chrome,Safari4+ */
@@ -164,6 +166,10 @@ a.button.install {
   color: white;
   float: none;
   font-weight: normal;
+}
+
+a.button.install span {
+    padding-left: 20px;
 }
 
 #download-zip span {
