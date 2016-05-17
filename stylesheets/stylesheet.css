@@ -153,9 +153,9 @@ a.button span {
 }
 
 a.button.install {
-  width: 130px;
+  width: 150px;
   padding: 5px 5px 5px 5px;
-  background: #d5000d;
+  background: #c5000c;
   background: -moz-linear-gradient(top,  #d5000d 0%, #d00000 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d5000d), color-stop(100%,#d00000)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #d5000d 0%,#d00000 100%); /* Chrome10+,Safari5.1+ */
@@ -169,7 +169,15 @@ a.button.install {
 }
 
 a.button.install span {
-    padding-left: 20px;
+    padding-left: 40px;
+}
+
+.install-ff span {
+    background: transparent url(http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-24.png) 12px 50% no-repeat;
+}
+
+.install-chrome span {
+    background: transparent url(https://www.google.com/images/icons/product/chrome-24.png) 12px 50% no-repeat;
 }
 
 #download-zip span {
