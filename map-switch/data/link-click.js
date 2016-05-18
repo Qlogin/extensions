@@ -3,8 +3,8 @@ var current_poi;
 var services = {
    'yandex' : {
       name : 'Yandex Map',
-      base_url : 'maps.yandex.ru',
-      icon : 'https://maps.yandex.ru/favicon.png',
+      base_url : 'yandex.ru/maps',
+      icon : 'https://yandex.ru/maps/favicon.png',
       get_poi_from_url : function(str) {
          var with_poi = true;
          str = str.replace(/\[/g, '%5B').replace(/\]/g, '%5D').replace(/ /g, '%2C');
