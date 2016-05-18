@@ -116,6 +116,22 @@ var services = {
          var link = '/#lat=' + args[1] + '&lon=' + args[2] + '&zoom=' + args[3];
          return link;
       }
+   },
+   'wikimapia' : {
+       name : 'Wikimapia',
+       base_url: 'wikimapia.org',
+       icon : 'http://wikimapia.org/favicon.ico',
+       get_poi_from_url : function(str) {
+           var res = str.match(/#lat=([\d.]+)&lon=([\d.]+)&z=([\d.]+)/);
+           if (!res) {
+               return res;
+           }
+           return [false].concat(res.slice(1));
+       },
+       get_url_from_poi : function(args) {
+           var link = '/#lat=' + args[1] + '&lon=' + args[2] + '&z=' + args[3];
+           return link;
+       }
    }
 };
 
@@ -165,8 +181,8 @@ function on_show(url) {
 }
 
 window.onload = function init() {
-   var ids = ['yandex', 'google', 'panoramio', 'osm', 'osm_ru', 'f4map'];
-
+   var ids = ['yandex', 'google', 'panoramio', 'osm', 'osm_ru', 'f4map', 'wikimapia'];
+   
    var src_row = document.getElementsByClassName('selection')[0];
    var table_rows = src_row.parentElement.children;
    var last_row = table_rows[table_rows.length - 1];
