@@ -71,6 +71,16 @@ window.onload = function init() {
       elink.addEventListener('mouseout', unselect);
       elink.addEventListener('click', open_link);
    }
+   
+   // Settings link
+   var setts = document.getElementById('settings');
+   setts.addEventListener('click', function() {
+      if (typeof addon !== 'undefined') {
+         addon.port.emit('open-settings')
+      } else { 
+         document.location.href = 'settings.html';
+      }
+   });
 
    // Listen for the "show" event being sent from the
    // main add-on code. It means that the panel's about

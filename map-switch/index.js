@@ -5,7 +5,7 @@ var self = require('sdk/self');
 
 var panel = panels.Panel({
    width : 224,
-   height: 260,
+   height: 275,
    contentURL: self.data.url('map-list.html'),
    onShow: handleShow,
    onHide: handleHide
@@ -40,5 +40,10 @@ function handleHide() {
 
 panel.port.on('link-clicked', function (url) {
    tabs.activeTab.url = url;
+   panel.hide();
+});
+
+panel.port.on('open-settings', function() {
+   tabs.open(self.data.url('settings.html'));
    panel.hide();
 });
