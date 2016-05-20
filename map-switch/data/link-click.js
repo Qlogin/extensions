@@ -2,7 +2,7 @@ var elems = [];
 var current_poi;
 var services = {
    'yandex' : {
-      name : 'Yandex Map',
+      name : 'Yandex Maps',
       base_url : 'yandex.ru/maps',
       icon : 'https://yandex.ru/maps/favicon.png',
       get_poi_from_url : function(str) {
@@ -27,7 +27,7 @@ var services = {
       }
    },
    'google' : {
-      name : 'Google Map',
+      name : 'Google Maps',
       base_url : 'www.google.ru/maps',
       icon : 'https://www.google.com/images/branding/product/ico/maps_16dp.ico',
       get_poi_from_url : function(str) {
@@ -164,10 +164,10 @@ function on_show(url) {
       var id = elems[i].getAttribute('id');
       var elink = elems[i].getElementsByClassName('link')[0];
       if (url.indexOf(services[id].base_url) != -1) {
-         elink.children[0].style.display = 'inline';
+         elink.children[1].style.display = 'inline';
          current_poi = services[id].get_poi_from_url(url);
       } else {
-         elink.children[0].style.display = 'none';
+         elink.children[1].style.display = 'none';
       }
       var img = elems[i].getElementsByClassName('icon')[0];
       img.setAttribute('src', services[id].icon);
@@ -213,6 +213,6 @@ window.onload = function init() {
       addon.port.on('show', on_show);
    } else {
       // TEST
-      on_show('http://maps.yandex.ru');
+      on_show('http://yandex.ru/maps');
    }
 }

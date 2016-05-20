@@ -7,17 +7,26 @@
    }
    table {
       width:  220px;
+      margin: 2px 1px;
+      border-spacing: 0px;
    }
    td {
       padding: 5px 10px;
       border: 2px solid white;
       background-color: #EBF5F9;
       font-size: small;
+      height: 32px;
    }
    td.link {
       cursor: pointer;
    }
-   td#coords {
+   img.icon {
+       width: 16px;
+       height: 16px;
+       margin-right: 10px;
+       vertical-align: text-top;
+   }
+   #coords {
       border-style: none
       padding: 1px 10px;
    }
@@ -28,12 +37,15 @@
    <table>
       <!--template-->
       <tr class="selection">
-         <td width="20px"><img class="icon" src="" height="16px"></td>
-         <td class="link"><img src="./check.png" align="right" style="display: none"></td>
+         <td class="link">
+             <img class="icon" src="">
+             <img src="./check.png" align="right" style="display: none">
+             <!--Text Node-->
+         </td>
       </tr>
       <!--end of template-->
       <tr>
-         <td id="coords" colspan="2">-</td>
+         <td id="coords">-</td>
       </tr>
    </table>
 </body>
