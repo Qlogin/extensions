@@ -1,16 +1,31 @@
 var buttons = require('sdk/ui/button/toggle');
 var panels = require('sdk/panel');
 var tabs = require('sdk/tabs');
-var self = require('sdk/self');
+var ss = require('sdk/simple-storage');
 
+// Setup default settings
+if (!ss.storage.used_services) {
+    ss.storage.used_services = [];
+}
+
+// Create popup panel
 var panel = panels.Panel({
    width : 224,
    height: 275,
-   contentURL: self.data.url('map-list.html'),
+   contentURL: './map-list.html',
+   contentScriptFile: [
+      './services.js',
+      './link-click.js'
+   ],
+   contentScriptWhen : 'end',
+   contentScriptOptions: {
+      'used_services' : ss.storage.used_services
+   },   
    onShow: handleShow,
    onHide: handleHide
 });
 
+// Add button that show popup
 var button = buttons.ToggleButton({
    id: 'map-list-button',
    label: 'Switch Map',
@@ -21,6 +36,32 @@ var button = buttons.ToggleButton({
    },
    onChange: handleChange
 });
+
+// Switch Map
+panel.port.on('link-clicked', function (url) {
+   tabs.activeTab.url = url;
+   panel.hide();
+});
+
+// Settings page
+var settings_tab = null;
+
+panel.port.on('open-settings', function() {
+   panel.hide();
+   if (settings_tab) {
+      settings_tab.activate();
+   } else {
+      tabs.open('./settings.html');
+   }
+});
+
+for (let tab of tabs) {
+   handleOpenSettings(tab);
+}
+tabs.on('ready', handleOpenSettings);
+
+
+///* Handlers *///
 
 function handleChange(state) {
    if (state.checked) {
@@ -38,12 +79,39 @@ function handleHide() {
    button.state('window', {checked: false});
 }
 
-panel.port.on('link-clicked', function (url) {
-   tabs.activeTab.url = url;
-   panel.hide();
-});
+function handleOpenSettings(tab) {
+   if (tab.url == 'resource://map-switch-at-roman-dot-qlogin/data/settings.html') {
+      settings_tab = tab;
+      settings_tab.on('close', handleCloseSettings);
+      var worker = tab.attach({
+         contentScriptFile : [
+            './services.js',
+            './settings.js'
+         ],
+         contentScriptOptions: {
+            'used_services' : ss.storage.used_services
+         }
+      });
+      worker.port.on('update_services', updateServices);
+   } else if (tab == settings_tab) {
+      settings_tab = null;
+   }
 
-panel.port.on('open-settings', function() {
-   tabs.open(self.data.url('settings.html'));
-   panel.hide();
-});
+}
+
+function handleCloseSettings(tab) {
+   settings_tab = null;
+}
+
+function updateServices(used_ids) {
+   ss.storage.used_services = used_ids;
+
+   var height = 19 + 32;
+   for (let id_state of used_ids) {
+      if (id_state[1]) {
+         height += 32;
+      }
+   }
+   panel.height = height;
+   panel.port.emit('update_services', used_ids);
+}
