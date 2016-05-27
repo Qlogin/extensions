@@ -1,40 +1,48 @@
-var elems = [];
+var elems = {};
 var current_poi;
 
-var ids = self.options.used_services;
-if (ids.length == 0) {
-   for (var id in services) {
-      ids.push([id, true]);
+function init() {
+   var ids = self.options.used_services;
+   if (ids.length == 0) {
+      for (var id in services) {
+         ids.push([id, true]);
+      }
+   }
+
+   var src_row = document.getElementsByClassName('selection')[0];
+   var table_rows = src_row.parentElement.children;
+   var last_row = table_rows[table_rows.length - 1];
+
+   for (let i = ids.length - 1; i >= 0; --i) {
+      let [id, checked] = ids[i];
+      let new_row = null;
+
+      if (i == 0) {
+         new_row = src_row;
+      } else {
+         new_row = src_row.cloneNode(true);
+         src_row.parentElement.insertBefore(new_row, last_row);
+         last_row = new_row;
+      }
+      elems[id] = new_row;
+
+      new_row.setAttribute('id', id);
+      new_row.style.display = checked ? '' : 'none';
+
+      let elink = new_row.getElementsByClassName('link')[0];
+      let text = document.createTextNode(services[id].name);
+      elink.appendChild(text);
+
+      elink.addEventListener('mouseover', select);
+      elink.addEventListener('mouseout', unselect);
+      elink.addEventListener('click', open_link);
    }
 }
 
-var src_row = document.getElementsByClassName('selection')[0];
-var table_rows = src_row.parentElement.children;
-var last_row = table_rows[table_rows.length - 1];
-
-elems.push(src_row);
-for (var i = 1; i != ids.length; ++i) {
-   var new_row = src_row.cloneNode(true);
-   src_row.parentElement.insertBefore(new_row, last_row);
-   elems.push(new_row);
-}
-
-for (var i = 0; i != ids.length; ++i) {
-   var [id, checked] = ids[i];
-   elems[i].setAttribute('id', id);
-   elems[i].style.display = checked ? '' : 'none';
-
-   var elink = elems[i].getElementsByClassName('link')[0];
-   var text = document.createTextNode(services[id].name);
-   elink.appendChild(text);
-
-   elink.addEventListener('mouseover', select);
-   elink.addEventListener('mouseout', unselect);
-   elink.addEventListener('click', open_link);
-}
+init();
 
 // Settings link
-var setts = document.getElementById('settings');
+var setts = document.getElementById('settings');      
 setts.addEventListener('click', function() {
    self.port.emit('open-settings')
 });
@@ -69,20 +77,19 @@ function open_link(event) {
 // Preparing panel content to show
 function on_show(url) {
    current_poi = null;
-   for (var i = 0; i != elems.length; ++i) {
-      if (elems[i].style.display == 'none') {
+   for (let id in elems) {
+      if (elems[id].style.display == 'none') {
          continue;
       }
 
-      var id = elems[i].getAttribute('id');
-      var elink = elems[i].getElementsByClassName('link')[0];
+      var elink = elems[id].getElementsByClassName('link')[0];
       if (url.indexOf(services[id].base_url) != -1) {
          elink.children[1].style.display = 'inline';
          current_poi = services[id].get_poi_from_url(url);
       } else {
          elink.children[1].style.display = 'none';
       }
-      var img = elems[i].getElementsByClassName('icon')[0];
+      var img = elems[id].getElementsByClassName('icon')[0];
       img.setAttribute('src', services[id].icon);
    }
    var coord_elem = document.getElementById('coords');
@@ -95,8 +102,13 @@ function on_show(url) {
 
 // Update displayed services list
 function on_update(used_ids) {
-   var len = Math.min(used_ids.length, elems.length);
-   for (var i = 0; i != len; ++i) {
-      elems[i].style.display = used_ids[i][1] ? '' : 'none';
+   for (let i = used_ids.length - 1; i >= 0; --i) {
+      let [id, checked] = used_ids[i];
+      elems[id].style.display = checked ? '' : 'none';
+
+      let parent = elems[id].parentElement;
+      if (parent.firstElementChild != elems[id]) {
+         parent.insertBefore(elems[id], parent.firstElementChild)
+      }
    }
 }

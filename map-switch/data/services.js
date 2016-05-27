@@ -1,3 +1,5 @@
+// TODO: adding new services broke the saved settings, fix it
+
 var services = {
     'yandex' : {
         name : 'Yandex Maps',
