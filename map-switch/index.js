@@ -38,6 +38,10 @@ var button = buttons.ToggleButton({
 });
 
 // Switch Map
+panel.port.on('set-height', function(height) {
+   panel.height = height;
+});
+
 panel.port.on('link-clicked', function (url) {
    tabs.activeTab.url = url;
    panel.hide();
@@ -105,13 +109,5 @@ function handleCloseSettings(tab) {
 
 function updateServices(used_ids) {
    ss.storage.used_services = used_ids;
-
-   var height = 19 + 32;
-   for (let id_state of used_ids) {
-      if (id_state[1]) {
-         height += 32;
-      }
-   }
-   panel.height = height;
    panel.port.emit('update_services', used_ids);
 }

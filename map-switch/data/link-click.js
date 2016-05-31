@@ -51,8 +51,9 @@ setts.addEventListener('click', function() {
 // main add-on code. It means that the panel's about
 // to be shown.
 self.port.on('show', on_show);
-
 self.port.on('update_services', on_update);
+
+self.port.emit('set-height', document.firstElementChild.scrollHeight + 1);
 
 ///* Callbacks *///
 
@@ -111,4 +112,5 @@ function on_update(used_ids) {
          parent.insertBefore(elems[id], parent.firstElementChild)
       }
    }
+   self.port.emit('set-height', document.firstElementChild.scrollHeight + 1);
 }
