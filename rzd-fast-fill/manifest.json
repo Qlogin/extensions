@@ -1,0 +1,18 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "background.js" ]
+   },
+   "content_scripts": [ {
+      "js": [ "pass.js" ],
+      "matches": [ "*://pass.rzd.ru/ticket/secure/*" ]
+   } ],
+   "description": "Позволяет сохранять паспортные данные и использовать их при покупке билетов",
+   "icons": {
+      "128": "128.png"
+   },
+   "manifest_version": 2,
+   "name": "Быстрое заполнение РЖД",
+   "permissions": [ "activeTab", "contextMenus" ],
+   "version": "1.2"
+}
