@@ -1,15 +1,18 @@
 {
    "background": {
-      "persistent": false,
       "scripts": [ "background.js" ]
    },
-   "content_scripts": [ {
-      "js": [ "pass.js" ],
-      "matches": [ "*://pass.rzd.ru/ticket/secure/*" ]
-   } ],
+   "content_scripts": [
+     {
+       "matches": ["*://pass.rzd.ru/ticket/secure/*"],
+       "js": ["pass.js"]
+     }
+   ],
    "description": "Позволяет сохранять паспортные данные и использовать их при покупке билетов",
    "icons": {
-      "128": "128.png"
+      "16": "16.png",
+      "32": "32.png",
+      "48": "48.png"
    },
    "manifest_version": 2,
    "name": "Быстрое заполнение РЖД",
