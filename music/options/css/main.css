@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 13px;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0;
+}
+
+.headline {
+  font-size: 2em;
+  line-height: 1.5em;
+  margin-bottom: .5em;
+  letter-spacing: 0;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87);
+}
+.tabs_container {
+  position: relative;
+  padding-left: 30em;
+}
+.tabs {
+  position: relative;
+}
+.header-stub {
+  position:absolute;
+  left:0;
+  font-size: 1.5em;
+  background-color:#00bcd4;
+  /*NY: background-color:#E43C31;*/
+  width:20em;
+  height:2.2em;
+  color: #fff;
+  padding-top: .25em;
+}
+.content {
+  margin-left:-30em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.content p {
+  line-height: 1.5em;
+  margin: .5em 0;
+  padding: 0;
+}
+
+.header-stub span {
+  color:#fff!important;
+}
+.header-stub img {
+  vertical-align: middle;
+}
+.list_item_toggle {
+  left:0!important;
+}
+.list_item_radio {
+  margin-bottom: 16px;
+}
+.list_item_radio label {
+  margin-left: 16px;
+}
+#popup_show_var_img, #notif-music, #notif-radio, #notif-music-radio {
+  position: absolute;
+  left: 44em;
+}
+#notif-music, #notif-radio, #notif-music-radio, #popup_show_var_img {
+  line-height: 0;
+}
+#notif-music img, #notif-radio img, #notif-music-radio img, #popup_show_var_img img {
+  display: block;
+}
+#new_tab_pinned_img {
+  margin-left: 72px;
+}
+.disabled img {
+  opacity: .2;
+  -webkit-filter: grayscale(1);
+}
+img.bordered {
+  border:1px solid #ccc;
+}
+.slider {
+  width:36em;
+}
+.slider_comment {
+  position: relative;
+  margin-left: 37em;
+  top: 3.5em;
+}
+.section {
+  margin-left: 3em;
+  max-width: 52em;
+}
+iframe#wmFrame {
+  box-shadow: 1px 2px 1px #ccc;
+  border-radius: 5px;
+}
+div.high {
+  background-color: beige;
+  border-radius: .75em;
+}
+
+/*HIGHLIGHT NEWS NY: #news > div > div:nth-child(3) {
+  background: url(https://music.yandex.ru/i/5naafMXOCMVlrD4J3G-BKpe7kxs.png);
+  color: #fff!important;
+  max-width: 900px;
+  border-radius: 10px;
+}
+HIGHLIGHT NEWS NY: #news > div > div:nth-child(3) * {
+  color: #fff!important;
+}
+HIGHLIGHT NEWS NY: #news > div > div:nth-child(3) svg {
+  fill: #fff!important;
+}
+QR CODE for controls: #qr {
+  width: 200px;
+  height: 200px;
+  background-color: #E5E5E5;
+  margin-top: 1em;
+}*/

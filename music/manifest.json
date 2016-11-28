@@ -1,0 +1,73 @@
+{
+   "background": {
+      "scripts": [ "extension/bg.js" ]
+   },
+   "browser_action": {
+      "default_icon": "images/icon_38_2_na.png",
+      "default_popup": "popup/popup.html",
+      "default_title": "Управление Яндекс.Музыкой/Радио: недоступно, нет открытых вкладок"
+   },
+   "commands": {
+      "player_dislike": {
+         "description": "Не нравится/не рекомендовать"
+      },
+      "player_info": {
+         "description": "Информация о текущем треке"
+      },
+      "player_like": {
+         "description": "Мне нравится"
+      },
+      "player_next": {
+         "description": "Следующий трек",
+         "global": true,
+         "suggested_key": {
+            "default": "MediaNextTrack"
+         }
+      },
+      "player_play": {
+         "description": "Воспроизведение/пауза",
+         "global": true,
+         "suggested_key": {
+            "default": "MediaPlayPause"
+         }
+      },
+      "player_prev": {
+         "description": "Предыдущий трек (режим Я.Музыка)",
+         "global": true,
+         "suggested_key": {
+            "default": "MediaPrevTrack"
+         }
+      },
+      "player_repeat": {
+         "description": "Переключить режим повтора (режим Я.Музыка)"
+      },
+      "player_shuffle": {
+         "description": "Переключить режим случайного проигрывания (режим Я.Музыка)"
+      },
+      "player_volume_down": {
+         "description": "Уменьшить громкость"
+      },
+      "player_volume_toggle": {
+         "description": "Выключить/включить звук"
+      },
+      "player_volume_up": {
+         "description": "Увеличить громкость"
+      }
+   },
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'",
+   "description": "Расширение добавляет на панель браузера кнопку для управления плеером сервиса Яндекс.Музыка (Yandex.Music)",
+   "icons": {
+      "128": "images/icon_128.png",
+      "16": "images/icon_16.png",
+      "48": "images/icon_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAihkheK/qLPv8ReD/3zhaBJ0g4QJopIqN5sAhXz+47wNDvOpmWW9MOiV0nHR5JXrto/TJ77pNKiSbF8SgHJmguJ7jKmtWqzSr6WYDcJBrr6dabQ96HN5fdDC94FFxEdtyiCEKOHVKGc8IYg9G3jw5GZKnwhGt08oSYgWZktxmQPktpf79dlFGv5Hx9iN89/fmAYkLHtRgAbjDYZ46DvaRDCedfkS05p33a0QxG+Xok3f2hsszxN/9rbBOMvdbL+FaOlOJ0sbk7ypHdTbGYyzUhPSwwOU3rxPRmtxLDCN3WWT2nvYm0YpzSi5CeRYids9XJYhOcbkWms7QPAXzy08DlwIDAQAB",
+   "manifest_version": 2,
+   "name": "Яндекс.Музыка - управление плеером",
+   "options_ui": {
+      "page": "options/index.html"
+   },
+   "permissions": [ "activeTab", "tabs", "storage", "notifications", "https://music.yandex.ru/*", "https://radio.yandex.ru/*", "https://music.yandex.ua/*", "https://radio.yandex.ua/*", "https://music.yandex.by/*", "https://radio.yandex.by/*", "https://music.yandex.kz/*", "https://radio.yandex.kz/*", "https://*.yandex.net/*" ],
+   "version": "1.7.2",
+   "web_accessible_resources": [ "images/icon_128.png", "images/like.svg", "images/unlike.svg" ]
+}

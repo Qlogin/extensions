@@ -1,0 +1,22 @@
+body {height:72px; width:324px;}
+
+#controls {margin-left: 0}
+#button_play {margin-top: 2px}
+
+/*volume, bar mode*/
+.volume {right: 2px; top: 10px;}
+.volume_track {margin-top:-49px;}
+/*volume, toggle mode*/
+#volumeToggle_cont {right: 2px; top: 11px}
+#button_volumeToggle.button {height: 50px;}
+#button_volumeToggle.button.button_checked {box-shadow: inset 0 0 0 2px rgba(0,0,0,0.3)!important;}
+
+/*dislike block*/
+#dislike_approve { left:0; height:72px; width:324px; }
+#dislike_approve div {font-size: 13px; padding: 0; margin-left: 50px; margin-right: 102px;}
+#dislike_approve .button:nth-child(2), #dislike_approve .button:nth-child(3) { bottom:12px; }
+#dislike_approve .button:nth-child(2) {left:0;}
+
+/*shuffle and repeat btns*/
+#repeat_cont { bottom: -5px; left: 81px; }
+#shuffle_cont { bottom: -5px; left: 173px; }

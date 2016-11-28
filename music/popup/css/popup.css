@@ -1,0 +1,86 @@
+/*common*/
+body {padding: 0; overflow:hidden; -webkit-user-select: none; width:308px; height: 89px;}
+* {padding: 0;margin: 0;}
+a.link {text-decoration: none;}
+.link {color: #000;cursor: pointer;}
+.gray {-webkit-filter:grayscale(1); opacity:0.2}
+#dislike_cont, #prev_cont, #next_cont, #like_cont {float:left; text-align: center; margin-top:11px;}
+.clearfix {clear: both;}
+
+#controls {margin-left: 14px}
+
+/*track title*/
+#track {text-align: center;padding: 6px 0;}
+.track_cont {font: 13px Arial,Helvetica,sans-serif;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.track_cont span.track_title {font-weight: bold; cursor: default;}
+.track_cont span.track_title.link, .playlist_item_description_cont .link { cursor:pointer; }
+.track_cont span.track_title.link:hover, .playlist_item_description_cont .link:hover { color: #e00!important; }
+.track_cont span.track_version {padding-left: .5em; color: #999;}
+/*track artists*/
+.track_artists {cursor: default;font: 13px Arial,Helvetica,sans-serif;margin: 6px 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.track_artists span.link { cursor:pointer; }
+.track_artists span.link:hover { color: #e00!important; }
+
+/*all buttons*/
+.button {cursor: pointer;-webkit-user-select: none;outline: 0; width:46px;height:50px;border:0;background: rgba(255,255,255,0.95);transition: background .1s ease-out;z-index: 1;}
+.button .icon {opacity: 1;margin: 0;background-size: auto;}
+.icon {display: inline-block;background: center center no-repeat;width: 24px;height: 24px;}
+
+/*dislike*/
+#dislike_approve .redline {border-bottom:1px solid red;}
+#dislike_approve { position:absolute; bottom:0; height:131px; width:288px; background-color: rgba(255,255,255,1); z-index:99; left:10px; }
+#dislike_approve .button:nth-child(2) { position:absolute; bottom:19px; left:4px; }
+#dislike_approve div { font-size:14px; margin-top:10px; text-align: center }
+#dislike_approve .button:nth-child(3) { position: absolute; right: 4px; bottom: 20px; width: auto; padding: 0 10px; border-radius: 30px; font-weight: bold;}
+
+/*play btn*/
+#button_play {cursor: pointer;-webkit-user-select: none; float:left; width:96px; margin-top:1px; text-align: center;}
+#button_play .icon_pp {margin: 22px;}
+.progress_shape_loading, .progress_shape_play {position:absolute; margin-left: -68px; width: 68px; height: 68px}
+.progress_shape_loading .progress_path {stroke: rgba(0,0,0,0.3);stroke-width: 2;}
+.progress_shape_loading path, .progress_shape_play path {fill: none}
+.progress_shape_play .progress_path {stroke: rgba(0,0,0,0.8);stroke-width: 2;}
+.progress_path {transition: stroke .15s ease-out;}
+.active .icon_pp {background-image: url(../img/pause.svg);}
+.icon_pp {background-image: url(../img/play.svg); background-size: cover;}
+
+/*shuffle and repeat btns*/
+#shuffle_cont  { position: absolute; bottom: 0; right: 31%; }
+#repeat_cont  { position: absolute; bottom: 0; left: 31%; }
+#repeat_cont .button, #shuffle_cont .button {width: 25px; height: 25px;}
+.icon_repeat_0, .icon_shuffle_0 { opacity: .4!important; }
+.icon_repeat_0, .icon_repeat_1, .icon_repeat_2, .icon_shuffle_0, .icon_shuffle_1 { background-size: 85%!important; }
+.icon_repeat_0 {background-image: url(../img/repeat_0.svg);}
+.icon_repeat_1 {background-image: url(../img/repeat_1.svg);}
+.icon_repeat_2 {background-image: url(../img/repeat_2.svg);}
+.icon_shuffle_0 {background-image: url(../img/shuffle_0.svg);}
+.icon_shuffle_1 {background-image: url(../img/shuffle_1.svg);}
+
+/*like and dislike btns*/
+.icon_like {background-image: url(../img/like2.svg); width:28px; height: 28px;}
+.button_checked .icon_like {background-image: url(../img/liked.svg);}
+.icon_dislike {background-image: url(../img/dislike.svg); width:28px; height: 28px;}
+.button_checked .icon_dislike {background-image: url(../img/disliked.svg);}
+
+/*prev and next btns*/
+.icon_next {background-image: url(../img/next2.svg);}
+.icon_prev {background-image: url(../img/prev.svg);}
+
+/*volume, bar mode*/
+.volume {position: absolute; background-color: #fff; cursor: pointer; top: 0; right: 0; z-index: 10;}
+.volume:hover .volume_track {visibility:visible;}
+.volume:hover .volume_filled {visibility:visible;}
+.volume:hover .volume_icon {visibility:hidden;}
+.volume.disabled {display: none;}
+.volume_icon {padding: 13px; background: url(../img/volume.svg) no-repeat center center; display: inline-block; width: 24px; height: 24px;}
+.volume_icon_off {background-image:url(../img/mute.svg)}
+.volume_icon_half {background-image:url(../img/volume_half.svg)}
+.volume_track { width: 5px; border: solid 1px #cbcbcb; border-radius: 3px; overflow: hidden; margin: -46px auto auto; visibility:hidden}
+.volume_filled {background: #000; height: 40px; visibility:hidden; position: relative}
+/*volume, toggle mode*/
+#volumeToggle_cont {position: absolute; right: 0; top: 1px; background-color: #fff;}
+.icon.icon_volumeToggle {background: url(../img/volume.svg) no-repeat 0 1px; overflow: hidden; box-sizing: border-box}
+#button_volumeToggle.button {background: #fff!important; height: 48px;}
+.button_checked .icon.icon_volumeToggle {background: url(../img/volume_off.svg) no-repeat 0 -47px}
+
+#home_cont {height: 232px; border-bottom: 1px solid #eee; margin-bottom: 10px; text-align: center; padding-top: 130px;}
