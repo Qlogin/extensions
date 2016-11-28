@@ -1,4 +1,5 @@
-var buttons = require('sdk/ui/button/toggle');
+var buttons = require("sdk/ui/button/toggle");
+var sidebars = require("sdk/ui/sidebar")
 var panels = require("sdk/panel");
 var urls = require("sdk/url");
 var tabs = require("sdk/tabs");
@@ -17,6 +18,12 @@ var button = buttons.ToggleButton({
   onChange: handleChange
 });
 
+var sidebar = sidebars.Sidebar({
+  id   : "manager-sidebar",
+  title: "Parole Manager",
+  url  : self.data.url("panel.html")
+});
+
 var panel = panels.Panel({
   contentURL: self.data.url("panel.html"),
   width: 300,
@@ -29,9 +36,9 @@ var panel = panels.Panel({
 
 function handleChange(state) {
   if (state.checked) {
-    panel.show({
-      position: button
-    });
+    sidebar.show();
+  } else {
+    sidebar.hide();
   }
 }
 
