@@ -1,4 +1,12 @@
 {
+   "applications": {
+      "gecko": {
+         "id": "rzd-fast-fill@Roman.Qlogin",
+         "strict_min_version": "48.0",
+         "strict_max_version": "50.*",
+         "update_url": "https://qlogin.github.io/extensions/RELEASE/updates.json"
+      }
+   },
    "background": {
       "scripts": [ "background.js" ]
    },
