@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "rzd-fast-fill@Roman.Qlogin": {
+      "updates": [
+        {
+          "version": "1.2",
+          "update_link": "https://qlogin.github.io/extensions/RELEASE/rzd-fast-fill/rzd-fast-fill-1.2.xpi"
+        }
+      ]
+    }
+  }
+}
