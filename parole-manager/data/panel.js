@@ -114,7 +114,6 @@ function on_close() {
 function on_set_user(user) {
   if (user != "") {
     document.getElementById("email").value = user;
-    console.info("Set user: " + user);
   }
 }
 
@@ -123,9 +122,14 @@ function on_set_moto(moto) {
   showMoto(false);
 }
 
+function on_show_hint(show) {
+  document.getElementById("hint").style.display = show ? "inline-block" : "none";
+}
+
 if (typeof addon !== 'undefined') {
   addon.port.on("init", on_init);
   addon.port.on("close", on_close);
   addon.port.on("set-user", on_set_user);
   addon.port.on("set-moto", on_set_moto);
+  addon.port.on("show-hint", on_show_hint);
 }

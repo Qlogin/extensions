@@ -1,14 +1,19 @@
-var buttons = require("sdk/ui/button/toggle");
-var sidebars = require("sdk/ui/sidebar")
-var panels = require("sdk/panel");
+var { ToggleButton } = require("sdk/ui/button/toggle");
+var { Sidebar } = require("sdk/ui/sidebar");
+var { Panel }   = require("sdk/panel");
+var { Hotkey }  = require("sdk/hotkeys");
+
 var urls = require("sdk/url");
 var tabs = require("sdk/tabs");
 var self = require("sdk/self");
-var hotkeys = require("sdk/hotkeys");
+
+var storage = require("sdk/simple-storage").storage;
+var simple_prefs = require("sdk/simple-prefs");
+var prefs = simple_prefs.prefs;
 
 // Setup UI elements
 
-var panel_btn = buttons.ToggleButton({
+var panel_btn = ToggleButton({
   id: "panel-button",
   label: "Parole Manager",
   icon: {
@@ -19,7 +24,7 @@ var panel_btn = buttons.ToggleButton({
   onChange: handlePanelToggle
 });
 
-var panel = panels.Panel({
+var panel = Panel({
   contentURL: self.data.url("panel.html"),
   width: 300,
   height:350,
@@ -27,7 +32,7 @@ var panel = panels.Panel({
   onHide: handlePanelHide
 });
 
-var sidebar = sidebars.Sidebar({
+var sidebar = Sidebar({
   id   : "manager-sidebar",
   title: "Parole Manager",
   url  : self.data.url("panel.html"),
@@ -36,7 +41,7 @@ var sidebar = sidebars.Sidebar({
   onReady:  handleSidebarReady
 });
 
-var sidebarHotKey = hotkeys.Hotkey({
+var sidebarHotKey = Hotkey({
   combo: "shift-alt-p",
   onPress: handleSidebarToggle,
 });
@@ -46,6 +51,8 @@ var sidebarHotKey = hotkeys.Hotkey({
 var page_worker;
 var sidebar_worker;
 var moto_string = "";
+if (prefs.save_moto)
+  moto_string = storage.moto;
 
 function _getHostName() {
   host = urls.URL(tabs.activeTab.url).hostname;
@@ -69,6 +76,7 @@ function handlePanelToggle(state) {
 function handlePanelShow() {
   panel.port.emit("init", _getHostName());
   panel.port.emit("set-moto", moto_string);
+  panel.port.emit("show-hint", prefs.view_moto_btn);
 
   if (page_worker)
     page_worker.port.emit("get-user");
@@ -94,6 +102,8 @@ function handleSidebarAttach(worker) {
   });
   worker.port.on("moto-changed", function(moto) {
     moto_string = moto;
+    if (prefs.save_moto)
+      storage.moto = moto;
   });
 }
 
@@ -102,6 +112,7 @@ function handleSidebarReady() {
     return;
 
   sidebar_worker.port.emit("set-moto", moto_string);
+  sidebar_worker.port.emit("show-hint", prefs.view_moto_btn);
 
   if (tabs.activeTab.readyState == "interactive" ||
       tabs.activeTab.readyState == "complete")
@@ -158,7 +169,25 @@ panel.port.on("fill-form", function(email, password) {
 
 panel.port.on("moto-changed", function(moto) {
   moto_string = moto;
-  console.info("Set moto: " + moto);
+  if (prefs.save_moto)
+    storage.moto = moto;
   if (sidebar_worker)
     sidebar_worker.port.emit("set-moto", moto);
 });
+
+function handlePreferencesChange(pref_name)
+{
+  if (pref_name == "save_moto") {
+    if (prefs.save_moto) {
+      storage.moto = moto_string;
+    } else {
+      storage.moto = "";
+    }
+  } else if (pref_name == "view_moto_btn") {
+    if (sidebar_worker)
+      sidebar_worker.port.emit("show-hint", prefs.view_moto_btn);
+  }
+}
+
+simple_prefs.on("save_moto", handlePreferencesChange);
+simple_prefs.on("view_moto_btn", handlePreferencesChange);
