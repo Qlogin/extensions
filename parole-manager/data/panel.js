@@ -132,4 +132,6 @@ if (typeof addon !== 'undefined') {
   addon.port.on("set-user", on_set_user);
   addon.port.on("set-moto", on_set_moto);
   addon.port.on("show-hint", on_show_hint);
+
+  addon.port.emit('set-height', document.firstElementChild.scrollHeight + 1);
 }

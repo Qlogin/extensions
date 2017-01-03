@@ -157,6 +157,10 @@ tabs.on('ready', function (tab) {
     handleTabChange(tab);
 });
 
+panel.port.on('set-height', function(height) {
+   panel.height = height;
+});
+
 panel.port.on("title-clicked", function () {
   tabs.open("http://parolemanager.com");
   panel.hide();
