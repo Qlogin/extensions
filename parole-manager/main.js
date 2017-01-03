@@ -184,8 +184,15 @@ function handlePreferencesChange(pref_name)
       storage.moto = "";
     }
   } else if (pref_name == "view_moto_btn") {
-    if (sidebar_worker)
+    if (prefs.view_moto_btn) {
+      storage.moto = moto_string = "";
+      panel.port.emit("set-moto", "");
+    }
+    if (sidebar_worker) {
+      if (prefs.view_moto_btn)
+        sidebar_worker.port.emit("set-moto", "");
       sidebar_worker.port.emit("show-hint", prefs.view_moto_btn);
+    }
   }
 }
 
