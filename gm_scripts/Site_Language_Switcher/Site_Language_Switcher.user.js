@@ -6,13 +6,14 @@
 // @description Add site language switcher at top-right corner (Combo box with icons-flags)
 // @include     *.cppreference.com/w/*
 // @include     *msdn.microsoft.com/*
+// @include     *.wikipedia.org/*
 // @license     MIT
 // @homepage    https://qlogin.github.io/extensions
 // @homepageURL https://qlogin.github.io/extensions
 // @downloadURL https://qlogin.github.io/extensions/gm_scripts/Site_Language_Switcher/Site_Language_Switcher.user.js
 // @updateURL   https://qlogin.github.io/extensions/gm_scripts/Site_Language_Switcher/Site_Language_Switcher.user.js
 // @supportURL  https://github.com/qlogin/extensions/issues
-// @version     0.1
+// @version     0.2
 // @grant       none
 // ==/UserScript==
 
@@ -53,20 +54,28 @@ var style_str = "" +
 ".rq-show {display:block;}\n";
 
 var languages = {
-    'ru' : { icon: 'http://flagpedia.net/data/flags/mini/ru.png', name: 'Русский'     , locale: 'ru-ru' },
-    'en' : { icon: 'http://flagpedia.net/data/flags/mini/gb.png', name: 'English'     , locale: 'en-gb' },
-    'us' : { icon: 'http://flagpedia.net/data/flags/mini/us.png', name: 'U.S. English', locale: 'en-us' },
-    'de' : { icon: 'http://flagpedia.net/data/flags/mini/de.png', name: 'Deutche'     , locale: 'de-de' }
+    'ru' : { icon: 'https://flagpedia.net/data/flags/mini/ru.png', name: 'Русский'     , locale: 'ru-ru' },
+    'en' : { icon: 'https://flagpedia.net/data/flags/mini/gb.png', name: 'English'     , locale: 'en-gb', alt: 'www' },
+    'us' : { icon: 'https://flagpedia.net/data/flags/mini/us.png', name: 'U.S. English', locale: 'en-us', alt: 'simple'},
+    'de' : { icon: 'https://flagpedia.net/data/flags/mini/de.png', name: 'Deutche'     , locale: 'de-de' },
+    'it' : { icon: 'https://flagpedia.net/data/flags/mini/it.png', name: 'Italiano'    , locale: 'it-it' }
 };
 
 var cur_lng;
 
 for (let lng in languages) {
     var l = languages[lng];
-    var re = new RegExp('[\./](' + lng + '|' + l.locale + ')[\./]');
+    var cases = lng + '|' + l.locale;
+    if (l.alt) {
+        cases += '|' + l.alt;
+    }
+    var re = new RegExp('[\./](' + cases + ')[\./]');
     if (re.test(document.URL)) {
         cur_lng = lng;
         break;
+    }
+    if (document.documentElement.lang == lng) {
+        cur_lng = lng;
     }
 }
 
@@ -95,21 +104,40 @@ if (cur_lng) {
     div2.className = 'rq-dropdown-content';
     div.appendChild(div2);
 
+    var lnglinks = document.querySelectorAll("a[lang],a[langid],a[langhref]");
+
     for (let lng in languages) {
         var l = languages[lng];
         var link = document.createElement("a");
-        if (lng != cur_lng) {
-            var re1 = new RegExp('([\./])(' + cur_lng + ')([\./])');
-            link.href = document.URL.replace(re1, '$1' + lng + '$3');
-            var re2 = new RegExp('([\./])(' + languages[cur_lng].locale + ')([\./])');
-            link.href = link.href.replace(re2, '$1' + l.locale + '$3');
-        } else {
-            link.href = "#";
-        }
+        link.hreflang = lng;
+
         var icon = document.createElement("img");
         icon.src = l.icon;
         link.appendChild(icon);
         link.appendChild(document.createTextNode(" " + l.name));
+
+        if (lng != cur_lng) {
+            let ex_link = document.querySelector("a[lang=" + lng + "],a[langid=" + lng + "]");
+            if (!ex_link && l.alt) {
+                ex_link = document.querySelector("a[lang=" + l.alt + "],a[langid=" + l.alt + "]");
+            }
+            if (ex_link) {
+                link.href = ex_link.href;
+                link.onclick = function () { ex_link.click(); }
+            } else {
+                var re1 = new RegExp('([\./])(' + cur_lng + ')([\./])');
+                link.href = document.URL.replace(re1, '$1' + lng + '$3');
+                var re2 = new RegExp('([\./])(' + languages[cur_lng].locale + ')([\./])');
+                link.href = link.href.replace(re2, '$1' + l.locale + '$3');
+                if (lnglinks.length > 0) {
+                    link.style.color = "dimgray";
+                    icon.style.filter = 'saturate(40%)';
+                }
+            }
+        } else {
+            link.href = "#";
+            link.style.color = "blue";
+        }
         div2.appendChild(link);
     }
 
