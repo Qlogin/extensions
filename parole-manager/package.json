@@ -2,7 +2,7 @@
   "id": "parole-manager@Roman.Qlogin",
   "title": "The Password Manager",
   "name": "parole-manager",
-  "version": "0.2.2",
+  "version": "0.3",
   "description": "A new most powerful tool to control your passwords",
   "main": "main.js",
   "author": "Roman Qlogin",
