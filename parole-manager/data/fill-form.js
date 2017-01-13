@@ -13,8 +13,8 @@ function on_fill_form(username, password) {
 
    pwd.val(password);
 
-   var selector = "input[name='username']";
-   if (username.contains('@'))
+   var selector = "input[name='username'],input[name='login']";
+   if (username.indexOf('@') != -1)
       selector += ",input[name='email']";
 
    var user = $(form).find(selector).filter(":visible");
@@ -37,7 +37,7 @@ function on_get_user() {
    if (!form)
       return;
 
-   var selector = "input[name='username'],input[name='email']";
+   var selector = "input[name='username'],input[name='email'],input[name='login']";
    var user = $(form).find(selector).filter(":visible");
    if (user.length == 0)
       return;

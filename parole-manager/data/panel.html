@@ -3,6 +3,14 @@
   <style type="text/css" media="all">
     body {
       background-color: #DDE2DD;
+      min-width: 260px;
+      max-width: 300px;
+      font-size: 100%;
+      font-family: serif;
+    }
+    .description {
+      font-size: 0.75em;
+      margin-top: 3px;
     }
     .title {
       text-align: center;
@@ -11,16 +19,28 @@
       color: #FFF;
       padding: 4px;
       font-weight: bold;
+      font-size: 0.85em;
     }
-    input[type="text"] {
+    input[type="text"],
+    input[type="password"] {
       width: 250px;
     }
     #password {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: bold;
     }
-    .hint {
-      font-size: smaller;
+    #hint {
+      padding: 1px;
+      position: absolute;
+      left: 230px;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .clear {
+      position: absolute;
+      padding: 5px;
+      left: 230px;
+      z-index: 1;
       cursor: pointer;
     }
   </style>
@@ -35,8 +55,10 @@
   <div>&nbsp;</div>
   <div class="description">Your Personal Secret Master Password:</div>
   <div class="field">
-    <input type="text" id="moto" oninput="motoChanged()"/>
-    <span class="hint" onclick="hintClicked()">[show]</span>
+    <input type="password" id="moto" onblur="updateMoto()"/>
+    <button id="hint" onmousedown="showMoto(true)" onmouseup="showMoto(false)">
+      <img src="eye.png" width="16px" height="16px"/>
+    </button>
   </div>
   <div class="description">Domain or URL:</div>
   <div class="field"><input type="text" id="domain"/></div>
@@ -46,13 +68,14 @@
   <div class="field"><input type="number" id="length" value="12" min="6" max="24" style="width:60px"/></div>
   <div>&nbsp;</div>
   <div class="center">
-    <input type="button" id="getPassword"  value="Show!"         onclick="showPassword()"/>
+    <input type="button" id="getPassword"  value="Show!"         onclick="showPassword(true)"/>
     <input type="button" id="copyPassword" value="To clipboard!" onclick="copyToClipboard()"/>
     <input type="button" id="fillForm"     value="Fill form!"    onclick="fillForm()"/>
   </div>
   <div>&nbsp;</div>
   <div class="description">Your password is:</div>
     <input type="text" id="password" readonly="true"/>
+    <img src="close.png" class="clear" onclick="showPassword(false)" />
   <div>&nbsp;</div>
 </body>
 </html>

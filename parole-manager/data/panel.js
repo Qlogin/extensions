@@ -6,33 +6,37 @@ function titleClicked() {
   addon.port.emit("title-clicked");
 }
 
-function motoChanged() {
+function updateMoto() {
   var moto = document.getElementById("moto");
-  var hint = document.getElementsByClassName("hint")[0];
-  if (moto.value == "")
-    hint.innerHTML = "[show]";
-  else
-    hint.innerHTML = "[hide]";
+  if (moto.value != "" && moto.type == "password") {
+    motoString = moto.value;
+    showMoto(false);
+
+    if (typeof addon !== 'undefined')
+      addon.port.emit("moto-changed", motoString);
+  }
 }
 
-function hintClicked() {
+function showMoto(show) {
   var moto = document.getElementById("moto");
-  var hint = document.getElementsByClassName("hint")[0];
-  if (moto.value != "") {
-     motoString = moto.value;
-     moto.value = "";
-     moto.setAttribute("placeholder", "●●●●●●●●●●");
-     hint.innerHTML = "[show]";
-  } else if (motoString != "") {
-     moto.value = motoString;
-     hint.innerHTML = "[hide]";
+  var hint = document.getElementById("hint");
+  if (show) {
+    updateMoto();
+    moto.type  = "text";
+    moto.value = motoString;
+  } else {
+    moto.type  = "password";
+    moto.value = "";
+    if (motoString != "") {
+      moto.setAttribute("placeholder", "●●●●●●●●●●");
+    } else {
+      moto.setAttribute("placeholder", "");
+    }
   }
 }
 
 function getPassword() {
-  var newMoto = document.getElementById("moto").value;
-  if (newMoto != "")
-     motoString = newMoto;
+  updateMoto();
   var stringForPassword = motoString
                         + document.getElementById("domain").value
                         + document.getElementById("email").value;
@@ -54,10 +58,14 @@ function getPasswordSimple(string) {
   return ""+a+""+b+""+c+""+d;
 };
 
-function showPassword() {
-  var shortPassword = getPassword();
-  document.getElementById("password").value = shortPassword;
-  return 1;
+function showPassword(show) {
+  var pwd = document.getElementById("password");
+  if (show) {
+    var shortPassword = getPassword();
+    pwd.value = shortPassword;
+  } else {
+    pwd.value = "";
+  }
 }
 
 function copyToClipboard() {
@@ -70,7 +78,7 @@ function copyToClipboard() {
     var successful = document.execCommand('copy');
     var msg = successful ? 'successfully' : 'unsuccessfully';
     console.log('Copy password to clipboard ' + msg);
-  } catch(err) {  
+  } catch(err) {
     console.log('Oops, unable to copy password');
   }
   area.value = "";
@@ -88,20 +96,19 @@ function on_init(host) {
   document.getElementById("domain").value = host;
 
   var moto = document.getElementById("moto");
-  var hint = document.getElementsByClassName("hint")[0];
   if (motoString != "") {
     moto.setAttribute("placeholder", "●●●●●●●●●●");
-    hint.innerHTML = "[show]";
   } else {
     moto.setAttribute("placeholder", "");
-    hint.innerHTML = "";
   }
+
+  addon.port.emit('set-height', document.body.scrollHeight);
 }
 
 function on_close() {
+  updateMoto();
+
   var moto = document.getElementById("moto");
-  if (moto.value != "")
-     motoString = moto.value;
   moto.value = "";
   document.getElementById("password").value = "";
 }
@@ -112,8 +119,19 @@ function on_set_user(user) {
   }
 }
 
+function on_set_moto(moto) {
+  motoString = moto;
+  showMoto(false);
+}
+
+function on_show_hint(show) {
+  document.getElementById("hint").style.display = show ? "inline-block" : "none";
+}
+
 if (typeof addon !== 'undefined') {
   addon.port.on("init", on_init);
   addon.port.on("close", on_close);
   addon.port.on("set-user", on_set_user);
+  addon.port.on("set-moto", on_set_moto);
+  addon.port.on("show-hint", on_show_hint);
 }
