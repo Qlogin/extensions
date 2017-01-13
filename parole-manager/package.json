@@ -31,6 +31,21 @@
     "description": "Show button on panel to examine input master password",
     "type": "bool",
     "value": true
+  },
+  {
+    "name" : "button_action",
+    "title": "Button Action",
+    "description": "Function of extension button in main toolbar",
+    "type" : "radio",
+    "value": "panel",
+    "options": [{
+      "value": "panel",
+      "label": "Dropdown Panel"
+    },
+    {
+      "value": "sidebar",
+      "label": "Toggle Sidebar"
+    }]
   }],
   "updateURL": "https://qlogin.github.io/extensions/RELEASE/parole-manager/update.rdf",
   "updateLink": "https://qlogin.github.io/extensions/RELEASE/parole-manager/parole-manager.xpi"

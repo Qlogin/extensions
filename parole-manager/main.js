@@ -21,7 +21,7 @@ var panel_btn = ToggleButton({
     "32": "./icon-32.png",
     "64": "./icon-64.png"
   },
-  onChange: handlePanelToggle
+  onChange: handleButtonToggle
 });
 
 var panel = Panel({
@@ -38,7 +38,9 @@ var sidebar = Sidebar({
   url  : self.data.url("panel.html"),
   onAttach: handleSidebarAttach,
   onDetach: handleSidebarDetach,
-  onReady:  handleSidebarReady
+  onReady:  handleSidebarReady,
+  onShow:   handleSidebarShow,
+  onHide:   handleSidebarHide
 });
 
 var sidebarHotKey = Hotkey({
@@ -67,9 +69,13 @@ function _getHostName() {
   return host;
 }
 
-function handlePanelToggle(state) {
-  if (state.checked) {
-    panel.show({ position: panel_btn });
+function handleButtonToggle(state) {
+  if (prefs.button_action == "panel") {
+    if (state.checked) {
+      panel.show({ position: panel_btn });
+    }
+  } else {
+    handleSidebarToggle();
   }
 }
 
@@ -83,7 +89,9 @@ function handlePanelShow() {
 }
 
 function handlePanelHide() {
-  panel_btn.state("window", { checked: false });
+  if (prefs.button_action == "panel") {
+    panel_btn.state("window", { checked: false });
+  }
   panel.port.emit("close");
 }
 
@@ -126,6 +134,16 @@ function handleSidebarReady() {
 function handleSidebarDetach(worker) {
   if (worker == sidebar_worker)
     sidebar_worker = null;
+}
+
+function handleSidebarShow() {
+  if (prefs.button_action == "sidebar")
+    panel_btn.state("window", { checked: true });
+}
+
+function handleSidebarHide() {
+  if (prefs.button_action == "sidebar")
+    panel_btn.state("window", { checked: false });
 }
 
 function handleTabChange(tab) {
