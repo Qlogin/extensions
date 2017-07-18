@@ -1,0 +1,164 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document url-prefix("http://git/"), url-prefix("http://git.int.kronshtadt.ru/") {
+  body {
+    background-image: url("http://qlogin.github.io/webgl/images/background.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+  }
+  .content-wrapper .container-fluid {
+    background: initial;
+  }
+  .row-content-block.content-component-block {
+    background: initial;
+  }
+  .header-logo {
+    background-image: url("https://global.download.synology.com/download/Package/img/Docker-GitLab/8.17.4-0022/thumb_256.png");
+    background-size: 40px 40px;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 54px;
+    height: 40px;
+  }
+  header .header-content .header-logo #logo {
+    position: fixed;
+    left: 55px;
+    top: 10px;
+    width: 50px;
+    height: 40px;
+  }
+  header.navbar-gitlab {
+    position: fixed;
+    width: 100%;
+    background-color: #e5e5e5;
+  }
+  header .global-dropdown-toggle {
+    background-color: initial;
+  }
+  /*header .header-content .global-dropdown .dropdown-menu-nav {
+    display: block;
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+    transition-duration: 100ms, 150ms, 25ms;
+    transition-delay: 35ms, 50ms, 25ms;
+  }*/
+  .page-with-sidebar {
+    padding-top: 50px;
+  }
+  .page-with-sidebar > .layout-nav {
+    background-color: transparent;
+    position: fixed;
+    top: 0px;
+    left: 25%;
+    width: 50%;
+    z-index: 400;
+    border-bottom: none;
+  }
+  .project-home-panel > .container-fluid {
+    max-width: 1280px;
+  }
+  .alert-wrapper {
+    position: fixed;
+    bottom: 0;
+  }
+  li.commit-header {
+    background: #eee;
+    background-image: linear-gradient(#eee 6.6%, #dfdfdf);
+    border-bottom: 1px solid #CCC;
+    color: #456;
+    text-shadow: 0 1px 1px #fff;
+    border: 1px solid #CCC;
+    word-wrap: break-word;
+    box-shadow: 0 0 0 3px #f1f1f1;
+  }
+  .commits-row {
+    padding: 0px 10px;
+  }
+  .commit-content .commiter {
+    float: left;
+    font-size: 0px;
+  }
+  .commit-content .commiter a {
+    font-size: 14px;
+  }
+  .commit-content .commiter .tooltip {
+    font-size: 12px;
+  }
+  .commit-content .commit-row-message {
+    margin-left: 15px;
+  }
+  .commit-content .commiter time {
+    display: none;
+  }
+  .commit-actions .btn {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 
+  }
+  .commit.flex-list {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .table-list .table-list-cell {
+    padding: 8px 10px 8px 10px;
+  }
+  .table-list .table-list-cell.avatar-cell {
+    width: 30px;
+  }
+  .avatar-cell a img.avatar {
+    width: 24px;
+    height: 24px;
+  }
+  .table-list-cell a.btn {
+    padding: 1px 5px;
+  }
+  
+  .project-stats .nav > li > a {
+    font-weight: bold;
+    color: #4a8bee;
+  }
+  .project-stats .nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .project-home-panel, .group-home-panel {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .project-home-panel .project-avatar {
+    float: left;
+  }
+  .project-home-panel .project-title {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 20px;
+  }
+  .wiki-page-header .nav-controls {
+    white-space: initial;
+  }
+  .nav-sidebar .nav li.project-row a {
+    font-size: small;
+  }
+  
+  .dropdown-menu-nav .project-avatar {
+    margin-left: 8px;
+    margin-right: 3px;
+    text-align: center;
+  }
+  
+  .commit-header span {
+    float: right;
+    color: #999;
+    text-shadow: 0 1px 1px #fff;
+    font-size: 85%;
+    padding-right: 20px;
+  }
+  .event-item .event-title {
+    font-weight: initial;
+  }
+  .event-item .event-title .author_name,
+  .event-item .event-title a {
+    font-weight: 600;
+  }
+}
