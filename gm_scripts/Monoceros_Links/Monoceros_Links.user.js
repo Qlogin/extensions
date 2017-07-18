@@ -37,7 +37,8 @@ var style_str = "" +
 "}" +
 ".heading1 {" +
 "    padding-bottom: 10px;" +
-"    font-family: MV Boli;" +
+"    font-family: 'Crafty Girls';" +
+"    font-weight: 300;" +
 "}" +
 "select, input:not([type]) {" +
 "    padding: 3px 5px;" +
@@ -68,6 +69,17 @@ var style_str = "" +
 "    padding-bottom: 5px;" +
 "    border: 1px solid #999;" +
 "}";
+
+var icon_link = document.createElement("link");
+icon_link.href = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQsK3pvC3HzIRo9whCbUZBVAyDo-ZEetyDhdijefZQrh59VIWtK";
+icon_link.type = "image/x-icon";
+icon_link.rel  = "shortcut icon";
+document.head.appendChild(icon_link);
+
+var font_link = document.createElement("link");
+font_link.href = "https://fonts.googleapis.com/css?family=Crafty+Girls";
+font_link.rel  = "stylesheet";
+document.head.appendChild(font_link);
 
 var css = document.createElement("style");
 css.innerHTML = style_str;
