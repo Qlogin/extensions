@@ -84,6 +84,10 @@ header h2 {
   letter-spacing: -1px;
 }
 
+h2 img {
+   vertical-align: middle;
+}
+
 #container {
   min-height: 595px;
   background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;
@@ -173,7 +177,7 @@ a.button.install span {
 }
 
 .install-ff span {
-    background: transparent url(https://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-24.png) 12px 50% no-repeat;
+    background: transparent url(../images/firefox.png) 12px 50% no-repeat;
 }
 
 .install-chrome span {
@@ -222,6 +226,7 @@ pre code {
 
 ul, ol, dl {
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 
@@ -325,7 +330,7 @@ blockquote {
 ul li {
   list-style-position: inside;
   list-style: disc;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 ol li {
