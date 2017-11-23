@@ -9,6 +9,11 @@
   .content-wrapper .container-fluid {
     background: initial;
   }
+  .content-wrapper:not(.page-with-layout-nav) {
+    margin-top: 0px;
+    position: absolute;
+    top: 0px;
+  }
   .row-content-block.content-component-block {
     background: initial;
   }
@@ -35,25 +40,24 @@
   header .global-dropdown-toggle {
     background-color: initial;
   }
-  /*header .header-content .global-dropdown .dropdown-menu-nav {
-    display: block;
-    transform: translateY(0);
-    visibility: visible;
-    opacity: 1;
-    transition-duration: 100ms, 150ms, 25ms;
-    transition-delay: 35ms, 50ms, 25ms;
-  }*/
   .page-with-sidebar {
     padding-top: 50px;
   }
   .page-with-sidebar > .layout-nav {
     background-color: transparent;
     position: fixed;
-    top: 0px;
+    top: -50px;
     left: 25%;
     width: 50%;
-    z-index: 400;
+    z-index: 1000;
     border-bottom: none;
+  }
+  .page-with-sidebar .sub-nav li a {
+    padding: 5px 10px;
+    line-height: 24px;
+  }
+  .container-limited {
+    max-width: 990px;
   }
   .project-home-panel > .container-fluid {
     max-width: 1280px;
@@ -62,31 +66,78 @@
     position: fixed;
     bottom: 0;
   }
+  .user-profile .profile-header .avatar-holder {
+    display: inline-block;
+    vertical-align: top;
+    width: 70px;
+  }
+  .user-profile .profile-header .avatar-holder .avatar {
+    width: 70px;
+    height: 70px;
+  }
+  .user-profile .profile-header .user-info {
+    display: inline-block;
+    padding: 0px 20px;
+  }
+
+  /* Commits */
   li.commit-header {
     background: #eee;
     background-image: linear-gradient(#eee 6.6%, #dfdfdf);
-    border-bottom: 1px solid #CCC;
     color: #456;
     text-shadow: 0 1px 1px #fff;
+    font-size: 12px;
     border: 1px solid #CCC;
     word-wrap: break-word;
     box-shadow: 0 0 0 3px #f1f1f1;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
-  .commits-row {
+  .commit-header .commits-count {
+    float: right;
+    color: #999;
+    text-shadow: 0 1px 1px #fff;
+    padding-right: 10px;
+  }
+  li.commits-row {
     padding: 0px 10px;
   }
+  li.commits-row .commit {
+    padding: 6px 0px;
+  }
+  li.commits-row .commit .avatar-cell {
+    width: 30px;
+  }
+  .commit-detail {
+    max-width: calc(100% - 30px);
+  }
+  .commit-content {
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .commit-actions .status-box {
+    margin: 0px 0px;
+  }
   .commit-content .commiter {
-    float: left;
+    display: inline;
     font-size: 0px;
+    order: -1;
   }
   .commit-content .commiter a {
     font-size: 14px;
   }
   .commit-content .commiter .tooltip {
     font-size: 12px;
+    font-weight: normal;
+  }
+  .commit-content .commiter .tooltip-inner {
+    max-width: 300px;
   }
   .commit-content .commit-row-message {
     margin-left: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .commit-content .commiter time {
     display: none;
@@ -94,9 +145,12 @@
   .commit-actions .btn {
     padding-top: 0px;
     padding-bottom: 0px;
-    font-size: 
   }
   .commit.flex-list {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  ul.blob-commit-info {
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -134,26 +188,33 @@
     margin-bottom: 2px;
     font-size: 20px;
   }
+  /* Wiki pages */
+  .container-limited.limit-container-width-sm {
+    max-width: 950px;
+  }
+  .wiki-page-header .wiki-breadcrumb {
+    display: none;
+  }
+  .wiki-page-header .wiki-last-edit-by {
+    font-size: 75%;
+    line-height: 24px;
+  }
   .wiki-page-header .nav-controls {
     white-space: initial;
+  }
+  /* Dropdown menu */
+  header .dropdown-menu-nav li a {
+    padding: 5px 16px;
   }
   .nav-sidebar .nav li.project-row a {
     font-size: small;
   }
-  
   .dropdown-menu-nav .project-avatar {
     margin-left: 8px;
     margin-right: 3px;
     text-align: center;
   }
-  
-  .commit-header span {
-    float: right;
-    color: #999;
-    text-shadow: 0 1px 1px #fff;
-    font-size: 85%;
-    padding-right: 20px;
-  }
+  /**/
   .event-item .event-title {
     font-weight: initial;
   }
