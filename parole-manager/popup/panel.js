@@ -2,9 +2,6 @@ var messageDigest = new com.oclib.javascript.security.MessageDigest();
 var numeralSystem = new com.oclib.javascript.math.NumeralSystem();
 var motoString = "";
 
-function titleClicked() {
-  addon.port.emit("title-clicked");
-}
 
 function updateMoto() {
   var moto = document.getElementById("moto");
@@ -90,7 +87,7 @@ function fillForm() {
   addon.port.emit("fill-form", email, shortPassword);
 }
 
-// Main panel events callback
+/// Main panel events callback ///
 
 function on_init(host) {
   document.getElementById("domain").value = host;
@@ -128,10 +125,36 @@ function on_show_hint(show) {
   document.getElementById("hint").style.display = show ? "inline-block" : "none";
 }
 
-if (typeof addon !== 'undefined') {
-  addon.port.on("init", on_init);
-  addon.port.on("close", on_close);
-  addon.port.on("set-user", on_set_user);
-  addon.port.on("set-moto", on_set_moto);
-  addon.port.on("show-hint", on_show_hint);
+/// Initialization block ///
+
+function listenForClicks() {
+  document.getElementById("title").addEventListener("click", function(e) {
+    browser.tabs.create({url: "http://parolemanager.com"});
+  });
+  document.getElementById("moto").addEventListener("blur", function(e) { updateMoto(); });
+
+  let hint = document.getElementById("hint");
+  hint.addEventListener("mousedown", function(e) { showMoto(true); });
+  hint.addEventListener("mouseup"  , function(e) { showMoto(false); });
+
+  // Buttons
+  document.getElementById("getPassword").addEventListener("click", function(e) { showPassword(true); });
+  document.getElementById("copyPassword").addEventListener("click", function(e) { copyToClipboard(); });
+  document.getElementById("fillForm").addEventListener("click", function(e) { fillForm(); });
+
+  document.getElementById("clear").addEventListener("click", function(e) { showPassword(false); });
 }
+
+function reportExecuteScriptError() {
+  document.getElementById("fillForm").disabled = true;
+}
+
+document.addEventListener("DOMContentLoaded", function(e) {
+  listenForClicks();
+
+  if (typeof browser !== 'undefined') {
+    browser.tabs.executeScript({file: "/content_scripts/fill-form.js"})
+      .catch(reportExecuteScriptError);
+  }
+});
+

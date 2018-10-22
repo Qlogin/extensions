@@ -45,5 +45,5 @@ function on_get_user() {
    self.port.emit("set-user", user.val());
 }
 
-self.port.on("fill-form", on_fill_form);
-self.port.on("get-user", on_get_user);
+//self.port.on("fill-form", on_fill_form);
+//self.port.on("get-user", on_get_user);

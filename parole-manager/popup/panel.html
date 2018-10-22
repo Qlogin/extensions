@@ -1,0 +1,38 @@
+﻿<html>
+<head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="panel.css"/>
+  <!-- Scripts -->
+  <script type="text/javascript" src="oclib/Root.js"></script>
+  <script type="text/javascript" src="oclib/MessageDigest.js"></script>
+  <script type="text/javascript" src="oclib/NumeralSystem.js"></script>
+  <script type="text/javascript" src="panel.js"></script>
+</head>
+<body>
+  <div id="title">Parole manager</div>
+  <div id="error-msg"></div>
+  <div id="content">
+    <div class="description">Your Personal Secret Master Password:</div>
+    <div class="field">
+      <input type="password" id="moto"/>
+      <button id="hint">
+        <img src="eye.png" width="16px" height="16px"/>
+      </button>
+    </div>
+    <div class="description">Domain or URL:</div>
+    <div class="field"><input type="text" id="domain"/></div>
+    <div class="description">Email or Username:</div>
+    <div class="field"><input type="text" id="email"/></div>
+    <div class="description">Length of Password (&lt;25):</div>
+    <div class="field"><input type="number" id="length" value="12" min="6" max="24" style="width:60px"/></div>
+    <div class="buttons">
+      <input type="button" id="getPassword"  value="Show!"/>
+      <input type="button" id="copyPassword" value="To clipboard!"/>
+      <input type="button" id="fillForm"     value="Fill form!"/>
+    </div>
+    <div class="description">Your password is:</div>
+      <input type="text" id="password" readonly="true"/>
+      <img src="close.png" id="clear"/>
+  </div>
+</body>
+</html>

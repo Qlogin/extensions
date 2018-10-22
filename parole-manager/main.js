@@ -1,4 +1,4 @@
-var { ToggleButton } = require("sdk/ui/button/toggle");
+/*var { ToggleButton } = require("sdk/ui/button/toggle");
 var { Sidebar } = require("sdk/ui/sidebar");
 var { Panel }   = require("sdk/panel");
 var { Hotkey }  = require("sdk/hotkeys");
@@ -220,3 +220,4 @@ function handlePreferencesChange(pref_name)
 
 simple_prefs.on("save_moto", handlePreferencesChange);
 simple_prefs.on("view_moto_btn", handlePreferencesChange);
+*/

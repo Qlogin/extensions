@@ -1,0 +1,48 @@
+body {
+    background-color: #DDE2DD;
+    min-width: 260px;
+    max-width: 300px;
+    font-size: 100%;
+    font-family: serif;
+}
+#title {
+    text-align: center;
+    cursor: pointer;
+    background-color: #007373;
+    color: #FFF;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+#content {
+    margin: 15px 0px;
+}
+.description {
+    font-size: 0.75em;
+    margin-top: 3px;
+}
+.buttons {
+    margin: 5px 0px;
+}
+input[type="text"],
+input[type="password"] {
+    width: 250px;
+}
+#password {
+    font-size: 1em;
+    font-weight: bold;
+}
+#hint {
+    padding: 1px;
+    position: absolute;
+    left: 230px;
+    z-index: 1;
+    cursor: pointer;
+}
+#clear {
+    position: absolute;
+    padding: 5px;
+    left: 230px;
+    z-index: 1;
+    cursor: pointer;
+}
