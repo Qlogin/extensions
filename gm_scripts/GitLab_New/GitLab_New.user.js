@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name        GitLab New
 // @namespace   Qlogin
-// @description Gitlab New UI
+// @description Web UI customization for GitLab CE 11.4.6
 // @include     http://git/*
-// @include     http://git.int.kronshtadt.ru/*
-// @version     3
+// @version     4
 // @grant       none
 // ==/UserScript==
 
@@ -15,22 +14,42 @@ var MD5 = function(s){function L(k,d){return(k<<d)|(k>>>(32-d));}function K(G,k)
                       function B(x){var k="",F="",G,d;for(d=0;d<=3;d++){G=(x>>>(d*8))&255;F="0"+G.toString(16);k=k+F.substr(F.length-2,2);}return k;}function J(k){k=k.replace(/rn/g,"n");var d="";for(var F=0;F<k.length;F++){var x=k.charCodeAt(F);if(x<128){d+=String.fromCharCode(x);}else{if((x>127)&&(x<2048)){d+=String.fromCharCode((x>>6)|192);d+=String.fromCharCode((x&63)|128);}else{d+=String.fromCharCode((x>>12)|224);d+=String.fromCharCode(((x>>6)&63)|128);d+=String.fromCharCode((x&63)|128);}}}return d;}
                       var C=Array();var P,h,E,v,g,Y,X,W,V;var S=7,Q=12,N=17,M=22;var A=5,z=9,y=14,w=20;var o=4,m=11,l=16,j=23;var U=6,T=10,R=15,O=21;s=J(s);C=e(s);Y=1732584193;X=4023233417;W=2562383102;V=271733878;for(P=0;P<C.length;P+=16){h=Y;E=X;v=W;g=V;Y=u(Y,X,W,V,C[P+0],S,3614090360);V=u(V,Y,X,W,C[P+1],Q,3905402710);W=u(W,V,Y,X,C[P+2],N,606105819);X=u(X,W,V,Y,C[P+3],M,3250441966);Y=u(Y,X,W,V,C[P+4],S,4118548399);V=u(V,Y,X,W,C[P+5],Q,1200080426);W=u(W,V,Y,X,C[P+6],N,2821735955);X=u(X,W,V,Y,C[P+7],M,4249261313);Y=u(Y,X,W,V,C[P+8],S,1770035416);V=u(V,Y,X,W,C[P+9],Q,2336552879);W=u(W,V,Y,X,C[P+10],N,4294925233);X=u(X,W,V,Y,C[P+11],M,2304563134);Y=u(Y,X,W,V,C[P+12],S,1804603682);V=u(V,Y,X,W,C[P+13],Q,4254626195);W=u(W,V,Y,X,C[P+14],N,2792965006);X=u(X,W,V,Y,C[P+15],M,1236535329);Y=f(Y,X,W,V,C[P+1],A,4129170786);V=f(V,Y,X,W,C[P+6],z,3225465664);W=f(W,V,Y,X,C[P+11],y,643717713);X=f(X,W,V,Y,C[P+0],w,3921069994);Y=f(Y,X,W,V,C[P+5],A,3593408605);V=f(V,Y,X,W,C[P+10],z,38016083);W=f(W,V,Y,X,C[P+15],y,3634488961);X=f(X,W,V,Y,C[P+4],w,3889429448);Y=f(Y,X,W,V,C[P+9],A,568446438);V=f(V,Y,X,W,C[P+14],z,3275163606);W=f(W,V,Y,X,C[P+3],y,4107603335);X=f(X,W,V,Y,C[P+8],w,1163531501);Y=f(Y,X,W,V,C[P+13],A,2850285829);V=f(V,Y,X,W,C[P+2],z,4243563512);W=f(W,V,Y,X,C[P+7],y,1735328473);X=f(X,W,V,Y,C[P+12],w,2368359562);Y=D(Y,X,W,V,C[P+5],o,4294588738);V=D(V,Y,X,W,C[P+8],m,2272392833);W=D(W,V,Y,X,C[P+11],l,1839030562);X=D(X,W,V,Y,C[P+14],j,4259657740);Y=D(Y,X,W,V,C[P+1],o,2763975236);V=D(V,Y,X,W,C[P+4],m,1272893353);W=D(W,V,Y,X,C[P+7],l,4139469664);X=D(X,W,V,Y,C[P+10],j,3200236656);Y=D(Y,X,W,V,C[P+13],o,681279174);V=D(V,Y,X,W,C[P+0],m,3936430074);W=D(W,V,Y,X,C[P+3],l,3572445317);X=D(X,W,V,Y,C[P+6],j,76029189);Y=D(Y,X,W,V,C[P+9],o,3654602809);V=D(V,Y,X,W,C[P+12],m,3873151461);W=D(W,V,Y,X,C[P+15],l,530742520);X=D(X,W,V,Y,C[P+2],j,3299628645);Y=t(Y,X,W,V,C[P+0],U,4096336452);V=t(V,Y,X,W,C[P+7],T,1126891415);W=t(W,V,Y,X,C[P+14],R,2878612391);X=t(X,W,V,Y,C[P+5],O,4237533241);Y=t(Y,X,W,V,C[P+12],U,1700485571);V=t(V,Y,X,W,C[P+3],T,2399980690);W=t(W,V,Y,X,C[P+10],R,4293915773);X=t(X,W,V,Y,C[P+1],O,2240044497);Y=t(Y,X,W,V,C[P+8],U,1873313359);V=t(V,Y,X,W,C[P+15],T,4264355552);W=t(W,V,Y,X,C[P+6],R,2734768916);X=t(X,W,V,Y,C[P+13],O,1309151649);Y=t(Y,X,W,V,C[P+4],U,4149444226);V=t(V,Y,X,W,C[P+11],T,3174756917);W=t(W,V,Y,X,C[P+2],R,718787259);X=t(X,W,V,Y,C[P+9],O,3951481745);Y=K(Y,h);X=K(X,E);W=K(W,v);V=K(V,g);}var i=B(Y)+B(X)+B(W)+B(V);return i.toLowerCase();};
 
-var svg = document.querySelector('.header-logo a#logo svg');
-if (svg) {
-  let parent = svg.parentElement;
-  parent.removeChild(svg);
+var get_gravatar = function(author) {
+   let email = '';
+   if (author.indexOf(',') != -1) {
+      email = author.split(', ').reverse().join('.');
+   } else {
+      email = author.replace(' ', '.');
+   }
+   email = (email + '@transas.com').toLowerCase();
+   return 'https://www.gravatar.com/avatar/' + MD5(email).toLowerCase() + '?d=wavatar'
 }
 
-var nav = document.querySelector('.global-dropdown-menu ul');
+// Replace new tanuki logo with old one
+var svg = document.querySelector('svg.tanuki-logo');
+if (svg) {
+   let parent = svg.parentElement;
+   parent.removeChild(svg);
+
+   let old_logo = document.createElement('img');
+   old_logo.src = 'https://global.download.synology.com/download/Package/img/Docker-GitLab/8.17.4-0022/thumb_256.png';
+   parent.insertBefore(old_logo, parent.firstChild);
+}
+
+// Create drop-down menu with starred projects
+var nav = document.querySelector('.qa-projects-dropdown-sidebar ul');
 if (nav) {
    var xhr = new XMLHttpRequest();
    xhr.onload = function() {
+      nav.removeChild(nav.lastChild);
+      nav.removeChild(nav.lastChild);
+
       let separator = document.createElement('li');
       separator.className = 'divider';
-      nav.insertBefore(separator, nav.children[1]);
+      nav.appendChild(separator);
 
       var projects = this.responseXML.querySelectorAll('.project-row');
-      for (var i in projects) {
+      for (var i = 0; i < projects.length; ++i) {
          let proj = projects[i];
          let link = proj.getElementsByTagName('a')[0];
          let new_proj = proj.cloneNode(false);
@@ -40,17 +59,19 @@ if (nav) {
 
          let new_link = document.createElement('a');
          new_link.href = link.href;
-         new_link.appendChild(proj.getElementsByClassName('namespace-name')[0]);
          new_link.appendChild(proj.getElementsByClassName('project-name')[0]);
 
          let avatar = proj.getElementsByClassName('project-avatar')[0];
-         avatar.className = 'avatar project-avatar s24';
-         if (avatar.dataset.src)
-            avatar.src = avatar.dataset.src;
+         avatar.classList.remove('s40');
+         avatar.classList.add('s24');
 
-         new_proj.appendChild(avatar);
+         if (avatar.dataset.src) {
+            avatar.src = avatar.dataset.src;
+         }
+
+         new_link.appendChild(avatar);
          new_proj.appendChild(new_link);
-         nav.insertBefore(new_proj, separator);
+         nav.appendChild(new_proj, separator);
       }
    };
    xhr.open("GET", document.location.origin + "/dashboard/projects/starred");
@@ -58,29 +79,52 @@ if (nav) {
    xhr.send();
 }
 
+// Query icons for commit author via Gravatar service
 var commits_list = document.getElementById('commits-list');
 if (commits_list) {
-   var avatar_procedure = function(node) {
+   let avatar_procedure = function(node) {
       let commiter = node.getElementsByClassName('commit-author-link')[0];
       let image = node.getElementsByTagName('img')[0];
-      if (image.dataset.src && image.dataset.src.indexOf('/assets/no_avatar') != -1) {
-         image.dataset.src = 'https://www.gravatar.com/avatar/' + MD5(commiter.title.toLowerCase()).toLowerCase() + '?d=wavatar';
+      if (image.src && image.src.indexOf('/assets/no_avatar') != -1) {
+         image.src = get_gravatar(commiter.textContent);
       }
    };
-   var commits = document.querySelectorAll('li.commits-row .commit').forEach(avatar_procedure);
+   commits_list.querySelectorAll('li.commits-row .commit').forEach(avatar_procedure);
 
-   var observer = new MutationObserver(function(mutations) {
+   var commits_observer = new MutationObserver(function(mutations) {
        mutations.forEach(function(mutation) {
            for (var i = 0; i < mutation.addedNodes.length; i++) {
                let new_node = mutation.addedNodes[i];
-               if (new_node.className == 'commit-header') {
-                  split_procedure(new_node);
-               } else if (new_node.className == 'commits-row') {
+               if (new_node.className == 'commits-row') {
                   new_node.querySelectorAll('.commit').forEach(avatar_procedure);
                }
            }
        });
    });
-   observer.observe(commits_list, { childList: true });
+   commits_observer.observe(commits_list, { childList: true });
 }
 
+// Query icons for activity user via Gravatar service
+var activity_list = document.getElementsByClassName('project-activity');
+if (activity_list && activity_list.length > 0) {
+   let avatar_procedure = function(node) {
+      let author = node.getElementsByClassName('author_name')[0];
+      let image = node.getElementsByTagName('img')[0];
+      if (image.src && image.src.indexOf('/assets/no_avatar') != -1) {
+         image.src = get_gravatar(author.textContent);
+      }
+   };
+   activity_list[0].querySelectorAll('div.event-item').forEach(avatar_procedure);
+
+   var activity_observer = new MutationObserver(function(mutations) {
+       mutations.forEach(function(mutation) {
+           for (var i = 0; i < mutation.addedNodes.length; i++) {
+               let new_node = mutation.addedNodes[i];
+               if (new_node.classList && new_node.classList.contains('event-item')) {
+                  avatar_procedure(new_node);
+               }
+           }
+       });
+   });
+   activity_observer.observe(activity_list[0], { childList: true });
+}
