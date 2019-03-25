@@ -3,90 +3,42 @@ body {
     background-attachment: fixed;
     background-repeat: repeat;
 }
-.content-wrapper .container-fluid {
-    background: initial;
+
+/* Project Home page */
+.project-home-panel {
+    padding-bottom: 16px;
 }
-.content-wrapper:not(.page-with-layout-nav) {
+.project-home-panel .project-header, .project-home-panel .project-home-desc {
+    visibility: hidden;
+    height: 0px;
+    margin: 0px;
+}
+.project-home-panel .project-repo-buttons div {
     margin-top: 0px;
-    position: absolute;
-    top: 0px;
 }
-.row-content-block.content-component-block {
-    background: initial;
+.project-stats .nav .stat-link {
+    color: #4a8bee;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    padding: 8px 12px;
+    line-height: 16px;
+    font-weight: 700;
 }
-.header-logo {
-    background-image: url("https://global.download.synology.com/download/Package/img/Docker-GitLab/8.17.4-0022/thumb_256.png");
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 54px;
-    height: 40px;
+.project-stats .nav .stat-link:hover, .project-stats .nav .stat-link:focus {
+    border: 1px solid #b5b5b5;
 }
-header .header-content .header-logo #logo {
-    position: fixed;
-    left: 55px;
-    top: 10px;
-    width: 50px;
-    height: 40px;
+.project-stats .nav .btn-missing {
+    display: none;
 }
-header.navbar-gitlab {
-    position: fixed;
-    width: 100%;
-    background-color: #e5e5e5;
-}
-header .global-dropdown-toggle {
-    background-color: initial;
-}
-.page-with-sidebar {
-    padding-top: 50px;
-}
-.page-with-sidebar > .layout-nav {
-    background-color: transparent;
-    position: fixed;
-    top: -50px;
-    left: 25%;
-    width: 50%;
-    z-index: 1000;
-    border-bottom: none;
-}
-.page-with-sidebar .sub-nav li a {
-    padding: 5px 10px;
-    line-height: 24px;
-}
-.content .top-area {
-    z-index: 1000;
-    position: relative;
+.git-clone-holder {
+    width: 450px;
 }
 
-.content .top-area .nav-controls {
-    margin-right: 20px;
+/*** Commits ***/
+#commits-list {
+    max-width: 1100px;
 }
-
-.container-limited {
-    max-width: 990px;
-}
-.project-home-panel > .container-fluid {
-    max-width: 1280px;
-}
-.alert-wrapper {
-    position: fixed;
-    bottom: 0;
-}
-.user-profile .profile-header .avatar-holder {
-    display: inline-block;
-    vertical-align: top;
-    width: 70px;
-}
-.user-profile .profile-header .avatar-holder .avatar {
-    width: 70px;
-    height: 70px;
-}
-.user-profile .profile-header .user-info {
-    display: inline-block;
-    padding: 0px 20px;
-}
-/* Commits */
-
+/* Header */
 li.commit-header {
     background: #eee;
     background-image: linear-gradient(#eee 6.6%, #dfdfdf);
@@ -99,135 +51,70 @@ li.commit-header {
     padding-top: 3px;
     padding-bottom: 3px;
 }
-.commit-header .commits-count {
+li.commit-header .commits-count {
     float: right;
     color: #999;
     text-shadow: 0 1px 1px #fff;
     padding-right: 10px;
 }
-li.commits-row {
-    padding: 0px 10px;
+/* Commit content */
+li.commit.flex-row {
+    padding: 5px 2px;
 }
-li.commits-row .commit {
-    padding: 6px 0px;
+li.commit .commit-content {
+    width: 100%;
 }
-li.commits-row .commit .avatar-cell {
-    width: 30px;
+li.commit .commit-content>:not(.committer) {
+    position: relative;
+    left: 10px;
 }
-.commit-detail {
-    max-width: calc(100% - 30px);
+li.commit .commit-content .committer {
+    float: left;
+    visibility: hidden;
+    width: 150px;
+    font-size: 1px;
 }
-.commit-content {
-    display: flex;
-    justify-content: flex-end;
-    overflow: hidden;
-}
-.commit-actions .status-box {
-    margin: 0px 0px;
-}
-.commit-content .commiter {
-    display: inline;
-    font-size: 0px;
-    order: -1;
-}
-.commit-content .commiter a {
+li.commit .commit-content .committer .commit-author-link {
+    visibility: visible;
     font-size: 14px;
 }
-.commit-content .commiter .tooltip {
+li.commit .commit-content .committer time:after {
+    visibility: visible;
+    content: '??';
     font-size: 12px;
-    font-weight: normal;
+    color: #999;
 }
-.commit-content .commiter .tooltip-inner {
-    max-width: 300px;
-}
-.commit-content .commit-row-message {
-    margin-left: 15px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-.commit-content .commiter time {
-    display: none;
-}
-.commit-actions .btn {
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-.commit.flex-list {
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-ul.blob-commit-info {
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-.table-list .table-list-cell {
-    padding: 8px 10px 8px 10px;
-}
-.table-list .table-list-cell.avatar-cell {
-    width: 30px;
+li.commits-row .commit .avatar-cell {
+    width: 35px;
 }
 .avatar-cell a img.avatar {
     width: 24px;
     height: 24px;
 }
-.table-list-cell a.btn {
-    padding: 1px 5px;
+li.commit .commit-actions .btn {
+    padding: 2px 6px;
 }
-.project-stats .nav > li > a {
-    font-weight: bold;
-    color: #4a8bee;
+li.commit .commit-actions .label {
+    font-size: 12px;
+    padding: 2px 10px;
 }
-.project-stats .nav {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-.project-home-panel,
-.group-home-panel {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-.project-home-panel .project-avatar {
-    float: left;
-}
-.project-home-panel .project-title {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    font-size: 20px;
-}
-/* Wiki pages */
 
-.container-limited.limit-container-width-sm {
-    max-width: 950px;
+/* Files */
+table.qa-file-tree tr td {
+    padding: 3px 16px;
 }
-.wiki-page-header .wiki-breadcrumb {
-    display: none;
+.qa-file-tree .tree-time-ago time {
+    visibility: hidden;
 }
-.wiki-page-header .wiki-last-edit-by {
-    font-size: 75%;
-    line-height: 24px;
+.qa-file-tree .tree-time-ago time:after {
+    visibility: visible;
+    color: black;
+    font-size: 12px;
+    content: attr(data-original-title);
 }
-.wiki-page-header .nav-controls {
-    white-space: initial;
+.qa-file-tree .tree-item-file-name i.fa-folder {
+    color: #acdd96;
 }
-/* Dropdown menu */
-
-header .dropdown-menu-nav li a {
-    padding: 5px 16px;
-}
-.nav-sidebar .nav li.project-row a {
-    font-size: small;
-}
-.dropdown-menu-nav .project-avatar {
-    margin-left: 8px;
-    margin-right: 3px;
-    text-align: center;
-}
-/**/
-
-.event-item .event-title {
-    font-weight: initial;
-}
-.event-item .event-title .author_name,
-.event-item .event-title a {
-    font-weight: 600;
+.qa-file-tree .tree-item-file-name i.fa-archive {
+    color: #9f6808;
 }
