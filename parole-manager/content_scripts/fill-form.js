@@ -24,10 +24,10 @@ function on_fill_form(username, password) {
    });
 }
 
-function on_get_user() {
+function get_user() {
    var pwd = $("input[type='password']").filter(":visible");
    if (pwd.length == 0)
-      return;
+      return '';
 
    var form = pwd.get(0).form;
    pwd.each(function(){
@@ -35,15 +35,38 @@ function on_get_user() {
          form = null;
    });
    if (!form)
-      return;
+      return '';
 
    var selector = "input[name='username'],input[name='email'],input[name='login']";
    var user = $(form).find(selector).filter(":visible");
    if (user.length == 0)
-      return;
+      return '';
 
-   self.port.emit("set-user", user.val());
+   return user.val();
 }
 
-//self.port.on("fill-form", on_fill_form);
-//self.port.on("get-user", on_get_user);
+chrome.runtime.onMessage.addListener(
+   function(request, sender, sendResponse) {
+      console.log('Receive ' + request.command);
+      if (request.command == "checkScript") {
+         sendResponse({ status: "ok" });
+      }
+});
+
+chrome.runtime.onConnect.addListener(function(port) {
+   if (port.name == "popup") {
+      console.log('Port connected!');
+      port.onMessage.addListener(function(msg) {
+         if (msg.commang == "getUser") {
+            port.postMessage({ 
+               command: "setUser",
+               user: get_user()
+            });
+         } else if (msg.command == "fillForm") {
+            on_fill_form(msg.user, msg.password);
+         }
+      });
+   }
+});
+
+console.log('Script injected!');

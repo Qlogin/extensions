@@ -1,9 +1,9 @@
 body {
     background-color: #DDE2DD;
-    min-width: 260px;
-    max-width: 300px;
     font-size: 100%;
     font-family: serif;
+    margin: 6px;
+    min-width: 300px;
 }
 #title {
     text-align: center;
@@ -21,28 +21,46 @@ body {
     font-size: 0.75em;
     margin-top: 3px;
 }
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.grid-item-left {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+}
+.grid-item-right {
+    grid-column: 3;
+    grid-row: 1;
+    z-index: 1;
+}
 .buttons {
     margin: 5px 0px;
 }
-input[type="text"],
-input[type="password"] {
-    width: 250px;
+input[type="text"] {
+    width: 100%;
+    height: 25px;
+}
+#moto {
+    width: 100%;
+    height: 25px;
 }
 #password {
     font-size: 1em;
     font-weight: bold;
 }
 #hint {
-    padding: 1px;
-    position: absolute;
-    left: 230px;
-    z-index: 1;
+    float: right;
     cursor: pointer;
+    height: 25px;
 }
+#hint > img {
+    width: 16px;
+    height: 16px;
+}
+
 #clear {
-    position: absolute;
-    padding: 5px;
-    left: 230px;
-    z-index: 1;
+    float: right;
+    padding: 4px;
     cursor: pointer;
 }

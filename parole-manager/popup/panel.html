@@ -13,11 +13,11 @@
   <div id="error-msg"></div>
   <div id="content">
     <div class="description">Your Personal Secret Master Password:</div>
-    <div class="field">
-      <input type="password" id="moto"/>
-      <button id="hint">
-        <img src="eye.png" width="16px" height="16px"/>
-      </button>
+    <div class="field grid">
+      <input type="password" class="grid-item-left" id="moto"/>
+      <div class="grid-item-right">
+        <button id="hint"><img src="eye.png"/></button>
+      </div>
     </div>
     <div class="description">Domain or URL:</div>
     <div class="field"><input type="text" id="domain"/></div>
@@ -31,8 +31,12 @@
       <input type="button" id="fillForm"     value="Fill form!"/>
     </div>
     <div class="description">Your password is:</div>
-      <input type="text" id="password" readonly="true"/>
-      <img src="close.png" id="clear"/>
+    <div class="field grid">
+      <input type="text" class="grid-item-left" id="password" readonly="true"/>
+      <div class="grid-item-right">
+        <img src="close.png" id="clear"/>
+      </div>
+    </div>
   </div>
 </body>
 </html>
